@@ -69,5 +69,11 @@ namespace BodeOfWar
         {
             MessageBox.Show(erro, "Erro", MessageBoxButtons.OK, MessageBoxIcon.Warning);
         }
+
+        private void btnSelecionarPartida_Click(object sender, EventArgs e)
+        {
+            Login login = new Login();
+            login.Show();
+        }
     }
 }

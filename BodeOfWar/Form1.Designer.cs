@@ -42,6 +42,7 @@ namespace BodeOfWar
             this.txtSenhaPartida = new System.Windows.Forms.TextBox();
             this.btnCriarPartida = new System.Windows.Forms.Button();
             this.lblVersao = new System.Windows.Forms.Label();
+            this.btnSelecionarPartida = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // btnPartida
@@ -141,7 +142,7 @@ namespace BodeOfWar
             // 
             // btnCriarPartida
             // 
-            this.btnCriarPartida.Location = new System.Drawing.Point(49, 65);
+            this.btnCriarPartida.Location = new System.Drawing.Point(74, 64);
             this.btnCriarPartida.Name = "btnCriarPartida";
             this.btnCriarPartida.Size = new System.Drawing.Size(75, 23);
             this.btnCriarPartida.TabIndex = 11;
@@ -158,11 +159,22 @@ namespace BodeOfWar
             this.lblVersao.TabIndex = 12;
             this.lblVersao.Text = "label1";
             // 
+            // btnSelecionarPartida
+            // 
+            this.btnSelecionarPartida.Location = new System.Drawing.Point(168, 178);
+            this.btnSelecionarPartida.Name = "btnSelecionarPartida";
+            this.btnSelecionarPartida.Size = new System.Drawing.Size(75, 23);
+            this.btnSelecionarPartida.TabIndex = 13;
+            this.btnSelecionarPartida.Text = "Selecionar";
+            this.btnSelecionarPartida.UseVisualStyleBackColor = true;
+            this.btnSelecionarPartida.Click += new System.EventHandler(this.btnSelecionarPartida_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(541, 234);
+            this.Controls.Add(this.btnSelecionarPartida);
             this.Controls.Add(this.lblVersao);
             this.Controls.Add(this.btnCriarPartida);
             this.Controls.Add(this.txtSenhaPartida);
@@ -199,6 +211,7 @@ namespace BodeOfWar
         private System.Windows.Forms.TextBox txtSenhaPartida;
         private System.Windows.Forms.Button btnCriarPartida;
         private System.Windows.Forms.Label lblVersao;
+        private System.Windows.Forms.Button btnSelecionarPartida;
     }
 }
 
