@@ -16,5 +16,10 @@ namespace BodeOfWar
         {
             InitializeComponent();
         }
+
+        private void Login_Load(object sender, EventArgs e)
+        {
+            this.Location = MousePosition;
+        }
     }
 }
