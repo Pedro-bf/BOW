@@ -8,18 +8,37 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
+using BodeOfWarServer;
+
 namespace BodeOfWar
 {
     public partial class Login : Form
     {
-        public Login()
+        private string idPartida;
+        public Login(String id)
         {
+            this.idPartida = id;
             InitializeComponent();
         }
 
         private void Login_Load(object sender, EventArgs e)
         {
             this.Location = MousePosition;
+        }
+
+        private void txtSenha_TextChanged(object sender, EventArgs e)
+        {
+            
+            
+        }
+
+        private void btnLogar_Click(object sender, EventArgs e)
+        {
+            string senha = txtSenha.Text;
+            string nome = txtNome.Text;
+            int id = Int32.Parse(idPartida);
+
+            Jogo.EntrarPartida(id, nome, senha);
         }
     }
 }

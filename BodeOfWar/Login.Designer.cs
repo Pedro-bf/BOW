@@ -41,7 +41,7 @@ namespace BodeOfWar
             this.lblNome.AutoSize = true;
             this.lblNome.Location = new System.Drawing.Point(16, 15);
             this.lblNome.Name = "lblNome";
-            this.lblNome.Size = new System.Drawing.Size(41, 13);
+            this.lblNome.Size = new System.Drawing.Size(47, 15);
             this.lblNome.TabIndex = 0;
             this.lblNome.Text = "Nome: ";
             // 
@@ -50,7 +50,7 @@ namespace BodeOfWar
             this.lblSenha.AutoSize = true;
             this.lblSenha.Location = new System.Drawing.Point(13, 42);
             this.lblSenha.Name = "lblSenha";
-            this.lblSenha.Size = new System.Drawing.Size(44, 13);
+            this.lblSenha.Size = new System.Drawing.Size(49, 15);
             this.lblSenha.TabIndex = 1;
             this.lblSenha.Text = "Senha: ";
             // 
@@ -67,6 +67,7 @@ namespace BodeOfWar
             this.txtSenha.Name = "txtSenha";
             this.txtSenha.Size = new System.Drawing.Size(100, 20);
             this.txtSenha.TabIndex = 3;
+            this.txtSenha.TextChanged += new System.EventHandler(this.txtSenha_TextChanged);
             // 
             // btnLogar
             // 
@@ -76,12 +77,13 @@ namespace BodeOfWar
             this.btnLogar.TabIndex = 4;
             this.btnLogar.Text = "Entrar";
             this.btnLogar.UseVisualStyleBackColor = true;
+            this.btnLogar.Click += new System.EventHandler(this.btnLogar_Click);
             // 
             // Login
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(190, 102);
+            this.ClientSize = new System.Drawing.Size(190, 100);
             this.Controls.Add(this.btnLogar);
             this.Controls.Add(this.txtSenha);
             this.Controls.Add(this.txtNome);
