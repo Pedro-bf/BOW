@@ -38,7 +38,14 @@ namespace BodeOfWar
             string nome = txtNome.Text;
             int id = Int32.Parse(idPartida);
 
-            Jogo.EntrarPartida(id, nome, senha);
+            string idJogador = Jogo.EntrarPartida(id, nome, senha);
+            string[] iten = idJogador.Split(',');
+            MessageBox.Show(Convert.ToString(idJogador));
+
+            Bode bode = new Bode(iten[0], iten[1], Int32.Parse(this.idPartida));
+            bode.Show();
+            this.Close();
+
         }
     }
 }

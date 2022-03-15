@@ -51,6 +51,7 @@ namespace BodeOfWar
                 string jogadores = Jogo.ListarJogadores(Int32.Parse(iten[0]));
                 if (jogadores.Contains("ERRO:")) mostraErro(jogadores);
                 else txtJogadores.Text = jogadores;
+                
             }
             else mostraErro("ERRO: Nenhuma partida foi escolhida");
         }
@@ -72,21 +73,14 @@ namespace BodeOfWar
 
         private void btnSelecionarPartida_Click(object sender, EventArgs e)
         {
-            
-
-            
-
             string partida = lstPartida.SelectedItem.ToString();
             string[] iten = partida.Split(',');
             var id = txtIdPartida.Text = iten[0];
 
             Login login = new Login(id);
             login.Show();
-
-            
-
-
         }
 
+        
     }
 }

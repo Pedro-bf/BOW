@@ -86,7 +86,7 @@ namespace BodeOfWar
             this.lblIdPartida.AutoSize = true;
             this.lblIdPartida.Location = new System.Drawing.Point(411, 19);
             this.lblIdPartida.Name = "lblIdPartida";
-            this.lblIdPartida.Size = new System.Drawing.Size(21, 13);
+            this.lblIdPartida.Size = new System.Drawing.Size(22, 15);
             this.lblIdPartida.TabIndex = 4;
             this.lblIdPartida.Text = "ID:";
             // 
@@ -95,7 +95,7 @@ namespace BodeOfWar
             this.lblJogadores.AutoSize = true;
             this.lblJogadores.Location = new System.Drawing.Point(373, 46);
             this.lblJogadores.Name = "lblJogadores";
-            this.lblJogadores.Size = new System.Drawing.Size(59, 13);
+            this.lblJogadores.Size = new System.Drawing.Size(68, 15);
             this.lblJogadores.TabIndex = 5;
             this.lblJogadores.Text = "Jogadores:";
             // 
@@ -120,7 +120,7 @@ namespace BodeOfWar
             this.lblNomePartida.AutoSize = true;
             this.lblNomePartida.Location = new System.Drawing.Point(5, 16);
             this.lblNomePartida.Name = "lblNomePartida";
-            this.lblNomePartida.Size = new System.Drawing.Size(38, 13);
+            this.lblNomePartida.Size = new System.Drawing.Size(44, 15);
             this.lblNomePartida.TabIndex = 8;
             this.lblNomePartida.Text = "Nome:";
             // 
@@ -129,7 +129,7 @@ namespace BodeOfWar
             this.lblSenhaPartida.AutoSize = true;
             this.lblSenhaPartida.Location = new System.Drawing.Point(2, 41);
             this.lblSenhaPartida.Name = "lblSenhaPartida";
-            this.lblSenhaPartida.Size = new System.Drawing.Size(41, 13);
+            this.lblSenhaPartida.Size = new System.Drawing.Size(46, 15);
             this.lblSenhaPartida.TabIndex = 9;
             this.lblSenhaPartida.Text = "Senha:";
             // 
@@ -155,7 +155,7 @@ namespace BodeOfWar
             this.lblVersao.AutoSize = true;
             this.lblVersao.Location = new System.Drawing.Point(12, 212);
             this.lblVersao.Name = "lblVersao";
-            this.lblVersao.Size = new System.Drawing.Size(35, 13);
+            this.lblVersao.Size = new System.Drawing.Size(41, 15);
             this.lblVersao.TabIndex = 12;
             this.lblVersao.Text = "label1";
             // 
