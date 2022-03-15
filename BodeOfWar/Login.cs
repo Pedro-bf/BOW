@@ -26,12 +26,6 @@ namespace BodeOfWar
             this.Location = MousePosition;
         }
 
-        private void txtSenha_TextChanged(object sender, EventArgs e)
-        {
-            
-            
-        }
-
         private void btnLogar_Click(object sender, EventArgs e)
         {
             string senha = txtSenha.Text;
@@ -40,7 +34,6 @@ namespace BodeOfWar
 
             string idJogador = Jogo.EntrarPartida(id, nome, senha);
             string[] iten = idJogador.Split(',');
-            MessageBox.Show(Convert.ToString(idJogador));
 
             Bode bode = new Bode(iten[0], iten[1], Int32.Parse(this.idPartida));
             bode.Show();

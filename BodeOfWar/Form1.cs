@@ -61,8 +61,10 @@ namespace BodeOfWar
             string nomeP = txtNomePartida.Text;
             string senhaP = txtSenhaPartida.Text;
 
+            int idPartida;
+
             string erro = Jogo.CriarPartida(nomeP, senhaP);
-            if(erro != null) mostraErro(erro);
+            if(!(int.TryParse(erro, out idPartida))) mostraErro(erro);
 
         }
 

@@ -37,7 +37,6 @@ namespace BodeOfWar
             this.idPartida = idPartida;
             InitializeComponent();
         }
-       
 
         private void Bode_Load(object sender, EventArgs e)
         {
@@ -47,7 +46,6 @@ namespace BodeOfWar
         private void btnIniciar_Click(object sender, EventArgs e)
         {
             var retorno = Jogo.IniciarPartida(Int32.Parse(this.idJogador), this.senha);
-            MessageBox.Show(retorno);
         }
 
         private void updateVez(object sender, EventArgs e)
@@ -58,7 +56,5 @@ namespace BodeOfWar
 
             lstVezEstado.Items.Add(Jogo.VerificarVez(this.idPartida));
         }
-
-        
     }
 }
