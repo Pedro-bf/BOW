@@ -33,12 +33,25 @@ namespace BodeOfWar
             int id = Int32.Parse(idPartida);
 
             string idJogador = Jogo.EntrarPartida(id, nome, senha);
-            string[] iten = idJogador.Split(',');
+            if (!(Erro(idJogador)))
+            {
+                string[] iten = idJogador.Split(',');
 
-            Bode bode = new Bode(iten[0], iten[1], Int32.Parse(this.idPartida));
-            bode.Show();
-            this.Close();
+                Bode bode = new Bode(iten[0], iten[1], Int32.Parse(this.idPartida));
+                bode.Show();
+                this.Close();
+            }
+            
+        }
 
+        private bool Erro(string erro)
+        {
+            if (erro.Contains("ERRO:"))
+            {
+                MessageBox.Show(erro, "Erro", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return true;
+            }
+            return false;
         }
     }
 }

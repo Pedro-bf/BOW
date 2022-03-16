@@ -75,14 +75,19 @@ namespace BodeOfWar
 
         private void btnSelecionarPartida_Click(object sender, EventArgs e)
         {
-            string partida = lstPartida.SelectedItem.ToString();
-            string[] iten = partida.Split(',');
-            var id = txtIdPartida.Text = iten[0];
+            if(lstPartida.SelectedItem == null)
+            {
+                mostraErro("Nenhuma partida foi selecionado");
+            }
+            else
+            {
+                string partida = lstPartida.SelectedItem.ToString();
+                string[] iten = partida.Split(',');
+                var id = txtIdPartida.Text = iten[0];
 
-            Login login = new Login(id);
-            login.Show();
-        }
-
-        
+                Login login = new Login(id);
+                login.Show();
+            }
+        }        
     }
 }
