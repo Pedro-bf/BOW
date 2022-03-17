@@ -25,8 +25,8 @@ namespace BodeOfWar
         public void InitTimer()
         {
             TimerChecarVez = new Timer();
-            TimerChecarVez.Tick += new EventHandler(updateVez);
-            TimerChecarVez.Interval = 10000; 
+            TimerChecarVez.Tick += new EventHandler(update);
+            TimerChecarVez.Interval = 5000; //5s 
             TimerChecarVez.Start();
         }
 
@@ -41,20 +41,27 @@ namespace BodeOfWar
         private void Bode_Load(object sender, EventArgs e)
         {
             InitTimer();
+            txtHistorico.Text = Jogo.ExibirNarracao(this.idPartida);
         }
 
         private void btnIniciar_Click(object sender, EventArgs e)
         {
             var retorno = Jogo.IniciarPartida(Int32.Parse(this.idJogador), this.senha);
+            update(sender, e);
         }
 
-        private void updateVez(object sender, EventArgs e)
+        private void update(object sender, EventArgs e)
         {
-            string verificarVez = Jogo.VerificarVez(this.idPartida);
-            string[] iten = verificarVez.Split(',');
-            lblJogadorVez.Text = iten[1];
 
-            lstVezEstado.Items.Add(Jogo.VerificarVez(this.idPartida));
+            string verificarVez = Jogo.VerificarVez(this.idPartida);
+            if (verificarVez.Contains("J"))
+            {
+                string[] iten = verificarVez.Split(',');
+                lblJogadorVez.Text = iten[1];
+            }
+
+            txtHistorico.Text = Jogo.ExibirNarracao(this.idPartida);
+            
         }
     }
 }

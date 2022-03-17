@@ -65,7 +65,6 @@ namespace BodeOfWar
 
             string erro = Jogo.CriarPartida(nomeP, senhaP);
             if(!(int.TryParse(erro, out idPartida))) mostraErro(erro);
-
         }
 
         private void mostraErro(string erro)
@@ -88,6 +87,11 @@ namespace BodeOfWar
                 Login login = new Login(id);
                 login.Show();
             }
-        }        
+        }
+
+        private void Form1_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }
