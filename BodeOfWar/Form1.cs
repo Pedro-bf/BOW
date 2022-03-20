@@ -56,17 +56,6 @@ namespace BodeOfWar
             else mostraErro("ERRO: Nenhuma partida foi escolhida");
         }
 
-        private void btnCriarPartida_Click(object sender, EventArgs e)
-        {
-            string nomeP = txtNomePartida.Text;
-            string senhaP = txtSenhaPartida.Text;
-
-            int idPartida;
-
-            string erro = Jogo.CriarPartida(nomeP, senhaP);
-            if(!(int.TryParse(erro, out idPartida))) mostraErro(erro);
-        }
-
         private void mostraErro(string erro)
         {
             MessageBox.Show(erro, "Erro", MessageBoxButtons.OK, MessageBoxIcon.Warning);
@@ -92,6 +81,12 @@ namespace BodeOfWar
         private void Form1_Load(object sender, EventArgs e)
         {
 
+        }
+
+        private void btnCriar_Click(object sender, EventArgs e)
+        {
+            CriarPartida partida = new CriarPartida();
+            partida.Show();
         }
     }
 }

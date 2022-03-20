@@ -63,5 +63,35 @@ namespace BodeOfWar
             txtHistorico.Text = Jogo.ExibirNarracao(this.idPartida);
             
         }
+
+        private void btnImg_Click(object sender, EventArgs e)
+        {
+
+            string cartas = Jogo.VerificarMao(Int32.Parse(this.idJogador), this.senha);
+            cartas = cartas.Replace('\r', ' ');
+            string[] iten = cartas.Split('\n');
+
+            int x = 20;
+            int y = 20;
+            int alturaMax = -1;
+
+            for(int i = 0; i < iten.Length - 1; i++)
+            {
+                PictureBox img = new PictureBox();
+                img.Size = new Size(115, 165);
+                //esse caminho não funcionara em outros computadores, precisa checar como fazer path corretamente
+                img.Image = Image.FromFile(@"F:\Facul\PI2\BOW\BodeOfWar\imagens\cartas\b1.PNG");
+                img.Location = new Point(x, y);
+                img.SizeMode = PictureBoxSizeMode.StretchImage;
+                x += img.Width + 10;
+                alturaMax = img.Height;
+                if(x > pnlMao.Width - 100)
+                {
+                    x = 20;
+                    y += alturaMax + 10;
+                }
+                this.pnlMao.Controls.Add(img);
+            }
+        }
     }
 }
