@@ -80,13 +80,16 @@ namespace BodeOfWar
             {
                 PictureBox img = new PictureBox();
                 img.Size = new Size(115, 165);
+
                 //se tudo estiver correto o caminho agora se adapta para o computador de onde esta sendo rodado
                 string currPath = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
                 currPath = currPath.Replace("\\bin\\Debug", ""); //apaga a parte \bin\Debug do path para voltar a pasta "raiz"
                 currPath = currPath = currPath.Insert(currPath.Length, "\\imagens\\cartas\\b1.PNG"); //adiciona ao final do caminho a img da que queremos mostrar
+                
                 img.Image = Image.FromFile(@currPath);
                 img.Location = new Point(x, y);
                 img.SizeMode = PictureBoxSizeMode.StretchImage;
+                
                 x += img.Width + 10;
                 alturaMax = img.Height;
                 if(x > pnlMao.Width - 100)
