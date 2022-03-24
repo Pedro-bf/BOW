@@ -3,7 +3,9 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -66,7 +68,6 @@ namespace BodeOfWar
 
         private void btnImg_Click(object sender, EventArgs e)
         {
-
             string cartas = Jogo.VerificarMao(Int32.Parse(this.idJogador), this.senha);
             cartas = cartas.Replace('\r', ' ');
             string[] iten = cartas.Split('\n');
@@ -75,12 +76,15 @@ namespace BodeOfWar
             int y = 20;
             int alturaMax = -1;
 
-            for(int i = 0; i < iten.Length - 1; i++)
+            for(int i = 0; i < 8; i++)
             {
                 PictureBox img = new PictureBox();
                 img.Size = new Size(115, 165);
-                //esse caminho não funcionara em outros computadores, precisa checar como fazer path corretamente
-                img.Image = Image.FromFile(@"F:\Facul\PI2\BOW\BodeOfWar\imagens\cartas\b1.PNG");
+                //se tudo estiver correto o caminho agora se adapta para o computador de onde esta sendo rodado
+                string currPath = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
+                currPath = currPath.Replace("\\bin\\Debug", ""); //apaga a parte \bin\Debug do path para voltar a pasta "raiz"
+                currPath = currPath = currPath.Insert(currPath.Length, "\\imagens\\cartas\\b1.PNG"); //adiciona ao final do caminho a img da que queremos mostrar
+                img.Image = Image.FromFile(@currPath);
                 img.Location = new Point(x, y);
                 img.SizeMode = PictureBoxSizeMode.StretchImage;
                 x += img.Width + 10;
