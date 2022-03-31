@@ -81,7 +81,7 @@ namespace BodeOfWar
             int y = 20;
             int alturaMax = -1;
 
-            for(int i = 0; i < iten.Length; i++)
+            for(int i = 0; i < iten.Length-1; i++)
             {
                 PictureBox img = new PictureBox();
                 img.Size = new Size(115, 165);
