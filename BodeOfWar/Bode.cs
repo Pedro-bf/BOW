@@ -86,9 +86,7 @@ namespace BodeOfWar
                 PictureBox img = new PictureBox();
                 img.Size = new Size(115, 165);
 
-                string currPath = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
-                currPath = currPath.Replace("\\bin\\Debug", ""); //apaga a parte \bin\Debug do path para voltar a pasta "raiz"
-
+                //pega a img correta da carta
                 for (int j = 0; j < cartasValores.Length-1; j++)
                 {
                     string[] aux = cartasValores[j].Split(',');
@@ -96,17 +94,18 @@ namespace BodeOfWar
                     int valorMao = Int32.Parse(iten[i]);
                     if (valorCarta == valorMao)
                     {
-                        string idCarta = aux[2].Trim();
-                        currPath = currPath.Insert(currPath.Length, $"\\imagens\\cartas\\b{idCarta}.PNG"); //adiciona ao final do caminho a img da que queremos mostrar
+                        img.Image = (Image)Properties.Resources.ResourceManager.GetObject("b" + aux[2].Trim());
                         break;
                     }
                 }
                 
-                
-                img.Image = Image.FromFile(@currPath);
                 img.Location = new Point(x, y);
                 img.SizeMode = PictureBoxSizeMode.StretchImage;
                 
+                /*
+                 * TODO: Mostrar o valor e quantida de bodes de cada carta
+                 */
+
                 x += img.Width + 10;
                 alturaMax = img.Height;
                 if(x > pnlMao.Width - 100)
