@@ -36,6 +36,12 @@ namespace BodeOfWar
             this.lblHistorico = new System.Windows.Forms.Label();
             this.btnImg = new System.Windows.Forms.Button();
             this.pnlMao = new System.Windows.Forms.Panel();
+            this.btnConfirmar = new System.Windows.Forms.Button();
+            this.txtEscolha = new System.Windows.Forms.TextBox();
+            this.lblEscolha = new System.Windows.Forms.Label();
+            this.lblEscolherIlha = new System.Windows.Forms.Label();
+            this.lblIlha = new System.Windows.Forms.Label();
+            this.lblValorIlha = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // lblJogadorVez
@@ -43,15 +49,16 @@ namespace BodeOfWar
             this.lblJogadorVez.AutoSize = true;
             this.lblJogadorVez.Location = new System.Drawing.Point(45, 9);
             this.lblJogadorVez.Name = "lblJogadorVez";
-            this.lblJogadorVez.Size = new System.Drawing.Size(0, 13);
+            this.lblJogadorVez.Size = new System.Drawing.Size(0, 15);
             this.lblJogadorVez.TabIndex = 23;
             // 
             // lblVerificarVez
             // 
             this.lblVerificarVez.AutoSize = true;
+            this.lblVerificarVez.BackColor = System.Drawing.Color.Transparent;
             this.lblVerificarVez.Location = new System.Drawing.Point(12, 9);
             this.lblVerificarVez.Name = "lblVerificarVez";
-            this.lblVerificarVez.Size = new System.Drawing.Size(28, 13);
+            this.lblVerificarVez.Size = new System.Drawing.Size(30, 15);
             this.lblVerificarVez.TabIndex = 22;
             this.lblVerificarVez.Text = "Vez:";
             // 
@@ -80,7 +87,7 @@ namespace BodeOfWar
             this.lblHistorico.AutoSize = true;
             this.lblHistorico.Location = new System.Drawing.Point(9, 595);
             this.lblHistorico.Name = "lblHistorico";
-            this.lblHistorico.Size = new System.Drawing.Size(48, 13);
+            this.lblHistorico.Size = new System.Drawing.Size(55, 15);
             this.lblHistorico.TabIndex = 27;
             this.lblHistorico.Text = "Historico";
             // 
@@ -101,12 +108,71 @@ namespace BodeOfWar
             this.pnlMao.Size = new System.Drawing.Size(1037, 198);
             this.pnlMao.TabIndex = 30;
             // 
+            // btnConfirmar
+            // 
+            this.btnConfirmar.Location = new System.Drawing.Point(334, 400);
+            this.btnConfirmar.Name = "btnConfirmar";
+            this.btnConfirmar.Size = new System.Drawing.Size(75, 23);
+            this.btnConfirmar.TabIndex = 31;
+            this.btnConfirmar.Text = "Confirmar";
+            this.btnConfirmar.UseVisualStyleBackColor = true;
+            this.btnConfirmar.Click += new System.EventHandler(this.btnConfirmar_Click);
+            // 
+            // txtEscolha
+            // 
+            this.txtEscolha.Location = new System.Drawing.Point(309, 374);
+            this.txtEscolha.Name = "txtEscolha";
+            this.txtEscolha.Size = new System.Drawing.Size(100, 20);
+            this.txtEscolha.TabIndex = 32;
+            // 
+            // lblEscolha
+            // 
+            this.lblEscolha.AutoSize = true;
+            this.lblEscolha.Location = new System.Drawing.Point(252, 374);
+            this.lblEscolha.Name = "lblEscolha";
+            this.lblEscolha.Size = new System.Drawing.Size(51, 15);
+            this.lblEscolha.TabIndex = 33;
+            this.lblEscolha.Text = "Escolha";
+            // 
+            // lblEscolherIlha
+            // 
+            this.lblEscolherIlha.AutoSize = true;
+            this.lblEscolherIlha.Location = new System.Drawing.Point(306, 340);
+            this.lblEscolherIlha.Name = "lblEscolherIlha";
+            this.lblEscolherIlha.Size = new System.Drawing.Size(78, 15);
+            this.lblEscolherIlha.TabIndex = 34;
+            this.lblEscolherIlha.Text = "Escolher Ilha";
+            // 
+            // lblIlha
+            // 
+            this.lblIlha.AutoSize = true;
+            this.lblIlha.Location = new System.Drawing.Point(12, 48);
+            this.lblIlha.Name = "lblIlha";
+            this.lblIlha.Size = new System.Drawing.Size(33, 15);
+            this.lblIlha.TabIndex = 35;
+            this.lblIlha.Text = "Ilha: ";
+            // 
+            // lblValorIlha
+            // 
+            this.lblValorIlha.AutoSize = true;
+            this.lblValorIlha.Location = new System.Drawing.Point(45, 48);
+            this.lblValorIlha.Name = "lblValorIlha";
+            this.lblValorIlha.Size = new System.Drawing.Size(14, 15);
+            this.lblValorIlha.TabIndex = 36;
+            this.lblValorIlha.Text = "0";
+            // 
             // Bode
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoScroll = true;
-            this.ClientSize = new System.Drawing.Size(1289, 761);
+            this.ClientSize = new System.Drawing.Size(1289, 759);
+            this.Controls.Add(this.lblValorIlha);
+            this.Controls.Add(this.lblIlha);
+            this.Controls.Add(this.lblEscolherIlha);
+            this.Controls.Add(this.lblEscolha);
+            this.Controls.Add(this.txtEscolha);
+            this.Controls.Add(this.btnConfirmar);
             this.Controls.Add(this.pnlMao);
             this.Controls.Add(this.btnImg);
             this.Controls.Add(this.lblHistorico);
@@ -115,7 +181,7 @@ namespace BodeOfWar
             this.Controls.Add(this.lblVerificarVez);
             this.Controls.Add(this.btnIniciar);
             this.MaximizeBox = false;
-            this.MaximumSize = new System.Drawing.Size(1305, 800);
+            this.MaximumSize = new System.Drawing.Size(1920, 1080);
             this.MinimumSize = new System.Drawing.Size(1305, 800);
             this.Name = "Bode";
             this.Text = "Bode";
@@ -134,5 +200,11 @@ namespace BodeOfWar
         private System.Windows.Forms.Label lblHistorico;
         private System.Windows.Forms.Button btnImg;
         private System.Windows.Forms.Panel pnlMao;
+        private System.Windows.Forms.Button btnConfirmar;
+        private System.Windows.Forms.TextBox txtEscolha;
+        private System.Windows.Forms.Label lblEscolha;
+        private System.Windows.Forms.Label lblEscolherIlha;
+        private System.Windows.Forms.Label lblIlha;
+        private System.Windows.Forms.Label lblValorIlha;
     }
 }

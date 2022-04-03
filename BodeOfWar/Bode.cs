@@ -20,7 +20,10 @@ namespace BodeOfWar
     {
         private Timer TimerChecarVez;
 
-        private string idJogador;
+        private string estadoJogo;
+
+        private string[] cartasMao;
+        private int idJogador;
         private string senha;
         private int idPartida;
 
@@ -34,7 +37,7 @@ namespace BodeOfWar
 
         public Bode(string idJogador, string senha, int idPartida)
         {
-            this.idJogador = idJogador;
+            this.idJogador = Int32.Parse(idJogador);
             this.senha = senha;
             this.idPartida = idPartida;
             InitializeComponent();
@@ -48,7 +51,7 @@ namespace BodeOfWar
 
         private void btnIniciar_Click(object sender, EventArgs e)
         {
-            var retorno = Jogo.IniciarPartida(Int32.Parse(this.idJogador), this.senha);
+            var retorno = Jogo.IniciarPartida(idJogador, this.senha);
             update(sender, e);
         }
 
@@ -56,10 +59,26 @@ namespace BodeOfWar
         {
 
             string verificarVez = Jogo.VerificarVez(this.idPartida);
+            string[] iten = verificarVez.Split(',');
+
+            
+
             if (verificarVez.Contains("J"))
             {
-                string[] iten = verificarVez.Split(',');
                 lblJogadorVez.Text = iten[1];
+                string temp = iten[3].Replace('\r', ' ');
+                temp = temp.Replace('\n', ' ');
+                estadoJogo = temp.Trim();
+
+                string valores = Jogo.VerificarIlha(idJogador, senha);
+
+                if (valores.Contains("ERRO:") == false)
+                {
+                    
+                    lblEscolherIlha.Text = valores;
+                }
+
+
             }
 
             txtHistorico.Text = Jogo.ExibirNarracao(this.idPartida);
@@ -68,53 +87,147 @@ namespace BodeOfWar
 
         private void btnImg_Click(object sender, EventArgs e)
         {
-            string mao = Jogo.VerificarMao(Int32.Parse(this.idJogador), this.senha);
-            mao = mao.Replace('\r', ' ');
-            string[] iten = mao.Split('\n');
+            string nomeFont = "Microsoft Sans Serif";
+            int tamanhoFont = 10;
 
-            string cartas = Jogo.ListarCartas();
-            cartas = cartas.Replace('\r', ' ');
-            string[] cartasValores = cartas.Split('\n');
-            
+            string mao = Jogo.VerificarMao(this.idJogador, this.senha);//volta o que tem na mao
+            mao = mao.Replace('\r', ' ');
+            cartasMao = mao.Split('\n');
+
+            this.pnlMao.Controls.Clear();
 
             int x = 20;
             int y = 20;
             int alturaMax = -1;
 
-            for(int i = 0; i < iten.Length-1; i++)
+            for (int i = 0; i < cartasMao.Length - 1; i++)
             {
                 PictureBox img = new PictureBox();
+
+                Label lblValorCarta = new Label();
+                Label lblQuantidadeBode = new Label();
+
                 img.Size = new Size(115, 165);
 
                 //pega a img correta da carta
-                for (int j = 0; j < cartasValores.Length-1; j++)
-                {
-                    string[] aux = cartasValores[j].Split(',');
-                    int valorCarta = Int32.Parse(aux[0]);
-                    int valorMao = Int32.Parse(iten[i]);
-                    if (valorCarta == valorMao)
-                    {
-                        img.Image = (Image)Properties.Resources.ResourceManager.GetObject("b" + aux[2].Trim());
-                        break;
-                    }
-                }
-                
-                img.Location = new Point(x, y);
-                img.SizeMode = PictureBoxSizeMode.StretchImage;
-                
-                /*
-                 * TODO: Mostrar o valor e quantida de bodes de cada carta
-                 */
 
-                x += img.Width + 10;
-                alturaMax = img.Height;
-                if(x > pnlMao.Width - 100)
+                string[] carta = EncontreCarta(cartasMao[i].Split(','));
+
+                if (carta != null)
                 {
-                    x = 20;
-                    y += alturaMax + 10;
+                    img.Image = (Image)Properties.Resources.ResourceManager.GetObject("b" + carta[2].Trim());
+
+                    lblValorCarta.Text = carta[0];
+                    lblQuantidadeBode.Text = carta[1];
+
+                    img.Location = new Point(x, y);
+                    lblValorCarta.Location = new Point(x + 20, y + 10);
+                    lblValorCarta.AutoSize = true;
+                    lblValorCarta.Font = new Font(nomeFont, tamanhoFont);
+                    lblValorCarta.ForeColor = Color.Black;
+                    //lblValorCarta.BackColor = Color.FromArgb(1, 1, 1,1);
+
+                    lblQuantidadeBode.Location = new Point(x + 20, img.Height - 10);
+                    lblQuantidadeBode.AutoSize = true;
+                    lblQuantidadeBode.Font = new Font(nomeFont, tamanhoFont);
+                    lblQuantidadeBode.ForeColor = Color.Black;
+                    //lblQuantidadeBode.BackColor = Color.FromArgb(1,5,13,18);
+
+                    img.SizeMode = PictureBoxSizeMode.StretchImage;
+
+                    x += img.Width + 10;
+                    alturaMax = img.Height;
+                    if (x > pnlMao.Width - 100)
+                    {
+                        x = 20;
+                        y += alturaMax + 10;
+                    }
+                    this.pnlMao.Controls.Add(lblQuantidadeBode);
+                    this.pnlMao.Controls.Add(lblValorCarta);
+                    this.pnlMao.Controls.Add(img);
                 }
-                this.pnlMao.Controls.Add(img);
             }
+        }
+
+        private void btnConfirmar_Click(object sender, EventArgs e)
+        {
+            switch (estadoJogo)
+            {
+                case "B":
+                    EscolhaBode(txtEscolha.Text,  sender, e);
+                    break;
+                case "I":
+                    EscolhaIlha(txtEscolha.Text);
+                    break;
+                default:
+                    break;
+            }
+            txtEscolha.Clear();
+        }
+
+        private void EscolhaBode(string valorBode, object sender, EventArgs e)
+        {
+            for (int i = 0; i < cartasMao.Length-1; i++)
+            {
+                int valor = Int32.Parse(cartasMao[i]);
+                int valorBod = Int32.Parse(valorBode);
+                if (valor == valorBod)
+                {
+                    string[] carta = EncontreCarta(cartasMao[i].Split(','));
+                    string mensagem = Jogo.Jogar(idJogador, senha, Int32.Parse(carta[0]));
+                    if (mensagem.Contains("ERRO"))
+                    {
+                        MessageBox.Show(mensagem);
+                        return;
+                    }
+
+                    btnImg_Click( sender, e);
+                }
+            }
+        }
+
+        private void EscolhaIlha(string valorIlha)
+        {
+            string valores = Jogo.VerificarIlha(idJogador, senha);
+            valores = valores.Replace('\r', ' ');
+            valores = valores.Replace('\n', ' ');
+            valores = valores.Trim();
+            string[] valoresIlhas = valores.Split(',');
+            
+
+            if (Int32.Parse(valoresIlhas[0]) == Int32.Parse(valorIlha) || 
+                Int32.Parse(valoresIlhas[1]) == Int32.Parse(valorIlha))
+            {
+                Jogo.DefinirIlha(idJogador, senha, Int32.Parse(valorIlha));
+                string mesaIlha = Jogo.VerificarMesa(idPartida);
+                lblValorIlha.Text = mesaIlha.Replace(mesaIlha[0], ' ');
+                lblEscolherIlha.Text = " ";
+
+                return;
+            }
+            MessageBox.Show("Valor de Ilha Invalido");
+        }
+
+        private string[] EncontreCarta(string[] cartaMao)
+        {
+
+            string cartas = Jogo.ListarCartas();//todas as cartas do jogo valor, quantidade bode, idImagem
+            cartas = cartas.Replace('\r', ' ');
+            string[] cartasValores = cartas.Split('\n');
+
+            for (int i = 0; i < cartasValores.Length-1; i++)
+            {
+                string[] aux = cartasValores[i].Split(',');
+                int valorCarta = Int32.Parse(aux[0]);
+                int valorMao = Int32.Parse(cartaMao[0]);
+
+                if (valorCarta == valorMao)
+                {
+                    return aux;
+                }
+                
+            }
+            return null;
         }
     }
 }
