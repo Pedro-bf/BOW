@@ -125,13 +125,13 @@ namespace BodeOfWar
                     lblValorCarta.AutoSize = true;
                     lblValorCarta.Font = new Font(nomeFont, tamanhoFont);
                     lblValorCarta.ForeColor = Color.Black;
-                    //lblValorCarta.BackColor = Color.FromArgb(1, 1, 1,1);
+                    lblValorCarta.BackColor = Color.Transparent;
 
                     lblQuantidadeBode.Location = new Point(x + 20, img.Height - 10);
                     lblQuantidadeBode.AutoSize = true;
                     lblQuantidadeBode.Font = new Font(nomeFont, tamanhoFont);
                     lblQuantidadeBode.ForeColor = Color.Black;
-                    //lblQuantidadeBode.BackColor = Color.FromArgb(1,5,13,18);
+                    lblQuantidadeBode.BackColor = Color.Transparent;
 
                     img.SizeMode = PictureBoxSizeMode.StretchImage;
 
