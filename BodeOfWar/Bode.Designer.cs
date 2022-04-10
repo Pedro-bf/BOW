@@ -42,6 +42,8 @@ namespace BodeOfWar
             this.lblEscolherIlha = new System.Windows.Forms.Label();
             this.lblIlha = new System.Windows.Forms.Label();
             this.lblValorIlha = new System.Windows.Forms.Label();
+            this.lblQtdBodes = new System.Windows.Forms.Label();
+            this.lblBodes = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // lblJogadorVez
@@ -49,7 +51,7 @@ namespace BodeOfWar
             this.lblJogadorVez.AutoSize = true;
             this.lblJogadorVez.Location = new System.Drawing.Point(45, 9);
             this.lblJogadorVez.Name = "lblJogadorVez";
-            this.lblJogadorVez.Size = new System.Drawing.Size(0, 15);
+            this.lblJogadorVez.Size = new System.Drawing.Size(0, 13);
             this.lblJogadorVez.TabIndex = 23;
             // 
             // lblVerificarVez
@@ -58,7 +60,7 @@ namespace BodeOfWar
             this.lblVerificarVez.BackColor = System.Drawing.Color.Transparent;
             this.lblVerificarVez.Location = new System.Drawing.Point(12, 9);
             this.lblVerificarVez.Name = "lblVerificarVez";
-            this.lblVerificarVez.Size = new System.Drawing.Size(30, 15);
+            this.lblVerificarVez.Size = new System.Drawing.Size(28, 13);
             this.lblVerificarVez.TabIndex = 22;
             this.lblVerificarVez.Text = "Vez:";
             // 
@@ -87,7 +89,7 @@ namespace BodeOfWar
             this.lblHistorico.AutoSize = true;
             this.lblHistorico.Location = new System.Drawing.Point(9, 595);
             this.lblHistorico.Name = "lblHistorico";
-            this.lblHistorico.Size = new System.Drawing.Size(55, 15);
+            this.lblHistorico.Size = new System.Drawing.Size(48, 13);
             this.lblHistorico.TabIndex = 27;
             this.lblHistorico.Text = "Historico";
             // 
@@ -130,7 +132,7 @@ namespace BodeOfWar
             this.lblEscolha.AutoSize = true;
             this.lblEscolha.Location = new System.Drawing.Point(252, 374);
             this.lblEscolha.Name = "lblEscolha";
-            this.lblEscolha.Size = new System.Drawing.Size(51, 15);
+            this.lblEscolha.Size = new System.Drawing.Size(45, 13);
             this.lblEscolha.TabIndex = 33;
             this.lblEscolha.Text = "Escolha";
             // 
@@ -139,7 +141,7 @@ namespace BodeOfWar
             this.lblEscolherIlha.AutoSize = true;
             this.lblEscolherIlha.Location = new System.Drawing.Point(306, 340);
             this.lblEscolherIlha.Name = "lblEscolherIlha";
-            this.lblEscolherIlha.Size = new System.Drawing.Size(78, 15);
+            this.lblEscolherIlha.Size = new System.Drawing.Size(68, 13);
             this.lblEscolherIlha.TabIndex = 34;
             this.lblEscolherIlha.Text = "Escolher Ilha";
             // 
@@ -148,7 +150,7 @@ namespace BodeOfWar
             this.lblIlha.AutoSize = true;
             this.lblIlha.Location = new System.Drawing.Point(12, 48);
             this.lblIlha.Name = "lblIlha";
-            this.lblIlha.Size = new System.Drawing.Size(33, 15);
+            this.lblIlha.Size = new System.Drawing.Size(30, 13);
             this.lblIlha.TabIndex = 35;
             this.lblIlha.Text = "Ilha: ";
             // 
@@ -157,9 +159,27 @@ namespace BodeOfWar
             this.lblValorIlha.AutoSize = true;
             this.lblValorIlha.Location = new System.Drawing.Point(45, 48);
             this.lblValorIlha.Name = "lblValorIlha";
-            this.lblValorIlha.Size = new System.Drawing.Size(14, 15);
+            this.lblValorIlha.Size = new System.Drawing.Size(13, 13);
             this.lblValorIlha.TabIndex = 36;
             this.lblValorIlha.Text = "0";
+            // 
+            // lblQtdBodes
+            // 
+            this.lblQtdBodes.AutoSize = true;
+            this.lblQtdBodes.Location = new System.Drawing.Point(204, 48);
+            this.lblQtdBodes.Name = "lblQtdBodes";
+            this.lblQtdBodes.Size = new System.Drawing.Size(13, 13);
+            this.lblQtdBodes.TabIndex = 38;
+            this.lblQtdBodes.Text = "0";
+            // 
+            // lblBodes
+            // 
+            this.lblBodes.AutoSize = true;
+            this.lblBodes.Location = new System.Drawing.Point(88, 48);
+            this.lblBodes.Name = "lblBodes";
+            this.lblBodes.Size = new System.Drawing.Size(116, 13);
+            this.lblBodes.TabIndex = 37;
+            this.lblBodes.Text = "Quantidade de Bodes: ";
             // 
             // Bode
             // 
@@ -167,6 +187,8 @@ namespace BodeOfWar
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoScroll = true;
             this.ClientSize = new System.Drawing.Size(1289, 759);
+            this.Controls.Add(this.lblQtdBodes);
+            this.Controls.Add(this.lblBodes);
             this.Controls.Add(this.lblValorIlha);
             this.Controls.Add(this.lblIlha);
             this.Controls.Add(this.lblEscolherIlha);
@@ -206,5 +228,7 @@ namespace BodeOfWar
         private System.Windows.Forms.Label lblEscolherIlha;
         private System.Windows.Forms.Label lblIlha;
         private System.Windows.Forms.Label lblValorIlha;
+        private System.Windows.Forms.Label lblQtdBodes;
+        private System.Windows.Forms.Label lblBodes;
     }
 }
