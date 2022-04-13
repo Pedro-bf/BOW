@@ -103,7 +103,7 @@ namespace BodeOfWar
             for (int i = 0; i < cartasMao.Length - 1; i++)
             {
                 PictureBox img = new PictureBox();
-
+  
                 Label lblValorCarta = new Label();
                 Label lblQuantidadeBode = new Label();
 
@@ -120,20 +120,28 @@ namespace BodeOfWar
                     lblValorCarta.Text = carta[0];
                     lblQuantidadeBode.Text = carta[1];
 
-                    img.Location = new Point(x, y);
-                    lblValorCarta.Location = new Point(x + 20, y + 10);
+                    //img.Location = new Point(x, y);
+                    lblValorCarta.Location = new Point(20, 10);
                     lblValorCarta.AutoSize = true;
                     lblValorCarta.Font = new Font(nomeFont, tamanhoFont);
                     lblValorCarta.ForeColor = Color.Black;
                     lblValorCarta.BackColor = Color.Transparent;
 
-                    lblQuantidadeBode.Location = new Point(x + 20, img.Height - 10);
+                    lblQuantidadeBode.Location = new Point(20, img.Height - 10);
                     lblQuantidadeBode.AutoSize = true;
                     lblQuantidadeBode.Font = new Font(nomeFont, tamanhoFont);
                     lblQuantidadeBode.ForeColor = Color.Black;
                     lblQuantidadeBode.BackColor = Color.Transparent;
 
                     img.SizeMode = PictureBoxSizeMode.StretchImage;
+
+                    Panel pnlCarta = new Panel();
+                    pnlCarta.Location = new Point(x, y)
+;                   pnlCarta.Controls.Add(lblValorCarta);
+                    pnlCarta.Controls.Add(lblQuantidadeBode);
+                    pnlCarta.BackgroundImage = img.Image;
+
+                    pnlCarta.Size = new Size(img.Width, pnlMao.Height);
 
                     x += img.Width + 10;
                     alturaMax = img.Height;
@@ -142,9 +150,13 @@ namespace BodeOfWar
                         x = 20;
                         y += alturaMax + 10;
                     }
+
+                    this.pnlMao.Controls.Add(pnlCarta);
+                    /*
                     this.pnlMao.Controls.Add(lblQuantidadeBode);
                     this.pnlMao.Controls.Add(lblValorCarta);
                     this.pnlMao.Controls.Add(img);
+                    */
                 }
             }
         }

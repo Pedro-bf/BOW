@@ -103,14 +103,14 @@ namespace BodeOfWar
             // 
             // pnlMao
             // 
-            this.pnlMao.Location = new System.Drawing.Point(223, 551);
+            this.pnlMao.Location = new System.Drawing.Point(223, 552);
             this.pnlMao.Name = "pnlMao";
             this.pnlMao.Size = new System.Drawing.Size(1037, 198);
             this.pnlMao.TabIndex = 30;
             // 
             // btnConfirmar
             // 
-            this.btnConfirmar.Location = new System.Drawing.Point(334, 400);
+            this.btnConfirmar.Location = new System.Drawing.Point(334, 401);
             this.btnConfirmar.Name = "btnConfirmar";
             this.btnConfirmar.Size = new System.Drawing.Size(75, 23);
             this.btnConfirmar.TabIndex = 31;
@@ -166,7 +166,7 @@ namespace BodeOfWar
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoScroll = true;
-            this.BackColor = System.Drawing.Color.Red;
+            this.BackColor = System.Drawing.Color.MintCream;
             this.ClientSize = new System.Drawing.Size(1289, 761);
             this.Controls.Add(this.lblValorIlha);
             this.Controls.Add(this.lblIlha);
