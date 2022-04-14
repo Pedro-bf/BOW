@@ -9,7 +9,7 @@ using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-
+using System.Runtime.InteropServices; //design
 using BodeOfWarServer;
 
 
@@ -18,6 +18,23 @@ namespace BodeOfWar
 
     public partial class Bode : Form
     {
+
+        //Design
+        [DllImport("Gdi32.dll", EntryPoint = "CreateRoundRectRgn")]
+
+        private static extern IntPtr CreateRoundRectRgn
+    (
+        int nLeftRect,
+        int nTopRect,
+        int nRightRect,
+        int nBottomRect,
+        int nWidthEllipse,
+        int nHeightEllipse
+    );
+
+
+
+
         private Timer TimerChecarVez;
 
         private string estadoJogo;
@@ -30,6 +47,9 @@ namespace BodeOfWar
 
         private bool checarQtdBode = true;
         private bool jogando = true;
+
+
+
 
         public void InitTimer()
         {
@@ -45,6 +65,7 @@ namespace BodeOfWar
             this.senha = senha;
             this.idPartida = idPartida;
             InitializeComponent();
+            Region = System.Drawing.Region.FromHrgn(CreateRoundRectRgn(0, 0, Width, Height, 25, 25));
         }
 
         private void Bode_Load(object sender, EventArgs e)
@@ -55,6 +76,11 @@ namespace BodeOfWar
 
         private void btnIniciar_Click(object sender, EventArgs e)
         {
+            pnlNav.Height = btnIniciar.Height;
+            pnlNav.Top = btnIniciar.Top;
+            pnlNav.Left = btnIniciar.Left;
+            
+
             var retorno = Jogo.IniciarPartida(idJogador, this.senha);
             update(sender, e);
         }
@@ -160,6 +186,11 @@ namespace BodeOfWar
 
         private void btnImg_Click(object sender, EventArgs e)
         {
+            pnlNav.Height = btnImg.Height;
+            pnlNav.Top = btnImg.Top;
+            pnlNav.Left = btnImg.Left;
+            btnImg.BackColor = Color.FromArgb(210, 180, 140);
+
             string nomeFont = "Microsoft Sans Serif";
             int tamanhoFont = 10;
 
@@ -223,7 +254,14 @@ namespace BodeOfWar
         }
 
         private void btnConfirmar_Click(object sender, EventArgs e)
+
         {
+
+            //Design
+            pnlNav.Height = btnIniciar.Height;
+            pnlNav.Top = btnIniciar.Top;
+            pnlNav.Left = btnIniciar.Left;
+
             switch (estadoJogo)
             {
                 case "B":
@@ -328,6 +366,36 @@ namespace BodeOfWar
                 
             }
             return null;
+        }
+
+        private void pictureBox1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void lblQtdBodes_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void lblVerificarVez_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void panel4_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void lblBodesJogador5_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void panel3_Paint(object sender, PaintEventArgs e)
+        {
+
         }
     }
 }

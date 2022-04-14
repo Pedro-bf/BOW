@@ -167,5 +167,23 @@
       <Install>false</Install>
     </BootstrapperPackage>
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Icon_Bode.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\island_icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8_cards_32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Cartas.png_32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Cartas.png_16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Icon_Bandeira.png_16.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
