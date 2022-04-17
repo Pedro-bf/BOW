@@ -31,6 +31,8 @@ namespace BodeOfWar
         private bool checarQtdBode = true;
         private bool jogando = true;
 
+        private string[] UltimoCartaMesa;
+
         public void InitTimer()
         {
             TimerChecarVez = new Timer();
@@ -44,6 +46,7 @@ namespace BodeOfWar
             this.idJogador = Int32.Parse(idJogador);
             this.senha = senha;
             this.idPartida = idPartida;
+            this.UltimoCartaMesa = new string[4];
             InitializeComponent();
         }
 
@@ -74,7 +77,12 @@ namespace BodeOfWar
 
             if (iten[0].Contains('J'))
             {
-                int qtdBode = Int32.Parse(lblQtdBodes.Text);
+                int qtdBode;
+                if (Int32.TryParse(lblQtdBodes.Text, out qtdBode) == false)
+                {
+                    qtdBode = 0;
+                }
+                
 
                 lblJogadorVez.Text = iten[1];
                 string temp = iten[3].Replace('\r', ' ');
@@ -88,13 +96,76 @@ namespace BodeOfWar
 
                     lblEscolherIlha.Text = valores;
                 }
-                string mesaIlha = Jogo.VerificarMesa(idPartida);
-                if (mesaIlha[0].Equals('I'))
-                {
-                    lblValorIlha.Text = mesaIlha.Replace(mesaIlha[0], ' ');//tira o l inicial
 
+                string mesaIlha = Jogo.VerificarMesa(idPartida);
+                mesaIlha = mesaIlha.Replace('\r', ' ');
+                mesaIlha = mesaIlha.Trim();
+                string[] mesa = mesaIlha.Split('\n');
+
+                string[] cartaMesa = new string[4];
+                int i = 0;
+                bool desenharMesa = false;
+                foreach ( string carta in mesa)
+                {
+                    if (carta.Contains('I'))
+                    {
+                        string tamanhoIlha = carta;
+                        lblValorIlha.Text = mesaIlha.Replace(tamanhoIlha[0], ' ');//tira o l inicial
+                        
+                    }
+                    else if (carta.Equals("") == false)
+                    {
+                        desenharMesa = true;
+                        string[] bode = carta.Split(',');
+                        string[] cartaBode = EncontreCarta(bode, 1);
+                        string auxCarta = "";
+                        int cont = 0;
+                        foreach (string elemento in cartaBode)
+                        {
+                            if (cont < 2)
+                            {
+                                auxCarta += elemento + ",";
+                                cont++;
+                            }
+                            else
+                            {
+                                auxCarta += elemento;
+                            }
+                        }
+                        cartaMesa[i] = auxCarta;
+                        i++;
+                    }
                 }
-                if (estadoJogo.Contains('I'))
+
+                int contador = 0;
+                //pnlMesa.Controls.Clear();
+                foreach (string item in cartaMesa)
+                {
+
+                    if (item == null || UltimoCartaMesa[contador] == null)
+                    {
+                        if(item != UltimoCartaMesa[contador])
+                        {
+                            desenharMesa = true;
+                        }
+                        break;
+                    }
+
+                    if (UltimoCartaMesa[contador].Equals(item))
+                    {
+                        desenharMesa = false;
+                    }
+                    
+                    contador++;
+                }
+
+                if (desenharMesa == true)
+                {
+                    desenharCarta(cartaMesa, pnlMesa);
+                    UltimoCartaMesa = cartaMesa;
+                }
+
+                if (estadoJogo.Contains('I') || estadoJogo.Contains('F')) 
                 {
                     if (checarQtdBode)
                     {
@@ -139,8 +210,6 @@ namespace BodeOfWar
 
         private void QtsBode(int quantidadeBode, string mesaIlha)
         {
-
-
             mesaIlha = mesaIlha.Replace('\r', ' ');
             string[] bodes = mesaIlha.Split('\n');
             for (int i = 1; i < bodes.Length-1; i++)
@@ -157,68 +226,17 @@ namespace BodeOfWar
             }
             lblQtdBodes.Text = quantidadeBode.ToString();
         }
-
         private void btnImg_Click(object sender, EventArgs e)
         {
-            string nomeFont = "Microsoft Sans Serif";
-            int tamanhoFont = 10;
-
             string mao = Jogo.VerificarMao(this.idJogador, this.senha);//volta o que tem na mao
             mao = mao.Replace('\r', ' ');
             cartasMao = mao.Split('\n');
 
             this.pnlMao.Controls.Clear();
 
-            int x = 20;
-            int y = 20;
-            int alturaMax = -1;
-
-            for (int i = 0; i < cartasMao.Length - 1; i++)
+            if (cartasMao != null)
             {
-                PictureBox img = new PictureBox();
-
-                Label lblValorCarta = new Label();
-                Label lblQuantidadeBode = new Label();
-
-                img.Size = new Size(115, 165);
-
-                //pega a img correta da carta
-
-                string[] carta = EncontreCarta(cartasMao[i].Split(','),0);
-
-                if (carta != null)
-                {
-                    img.Image = (Image)Properties.Resources.ResourceManager.GetObject("b" + carta[2].Trim());
-
-                    lblValorCarta.Text = carta[0];
-                    lblQuantidadeBode.Text = carta[1];
-
-                    img.Location = new Point(x, y);
-                    lblValorCarta.Location = new Point(x + 20, y + 10);
-                    lblValorCarta.AutoSize = true;
-                    lblValorCarta.Font = new Font(nomeFont, tamanhoFont);
-                    lblValorCarta.ForeColor = Color.Black;
-                    //lblValorCarta.BackColor = Color.FromArgb(1, 1, 1,1);
-
-                    lblQuantidadeBode.Location = new Point(x + 20, img.Height - 10);
-                    lblQuantidadeBode.AutoSize = true;
-                    lblQuantidadeBode.Font = new Font(nomeFont, tamanhoFont);
-                    lblQuantidadeBode.ForeColor = Color.Black;
-                    //lblQuantidadeBode.BackColor = Color.FromArgb(1,5,13,18);
-
-                    img.SizeMode = PictureBoxSizeMode.StretchImage;
-
-                    x += img.Width + 10;
-                    alturaMax = img.Height;
-                    if (x > pnlMao.Width - 100)
-                    {
-                        x = 20;
-                        y += alturaMax + 10;
-                    }
-                    this.pnlMao.Controls.Add(lblQuantidadeBode);
-                    this.pnlMao.Controls.Add(lblValorCarta);
-                    this.pnlMao.Controls.Add(img);
-                }
+                desenharCarta(cartasMao, pnlMao);
             }
         }
 
@@ -328,6 +346,68 @@ namespace BodeOfWar
                 
             }
             return null;
+        }
+
+        private void desenharCarta(string[] cartas, Panel panel)
+        {
+            int x = 20;
+            int y = 20;
+            int alturaMax = -1;
+
+            string nomeFont = "Microsoft Sans Serif";
+            int tamanhoFont = 10;
+
+            panel.Controls.Clear();
+
+            foreach (string item in cartas)
+            {
+                if (item == null)
+                {
+                    break;
+                }
+                if (item.Equals("") == true)
+                {
+                    break;
+                }
+                PictureBox img = new PictureBox();
+
+                Label lblValorCarta = new Label();
+                Label lblQuantidadeBode = new Label();
+                img.Size = new Size(115, 165);
+
+                string[] carta = EncontreCarta(item.Split(','), 0);
+
+                img.Image = (Image)Properties.Resources.ResourceManager.GetObject("b" + carta[2].Trim());
+
+                lblValorCarta.Text = carta[0];
+                lblQuantidadeBode.Text = carta[1];
+
+                img.Location = new Point(x, y);
+                lblValorCarta.Location = new Point(x + 20, y + 10);
+                lblValorCarta.AutoSize = true;
+                lblValorCarta.Font = new Font(nomeFont, tamanhoFont);
+                lblValorCarta.ForeColor = Color.Black;
+                //lblValorCarta.BackColor = Color.FromArgb(1, 1, 1,1);
+
+                lblQuantidadeBode.Location = new Point(x + 20, img.Height - 10);
+                lblQuantidadeBode.AutoSize = true;
+                lblQuantidadeBode.Font = new Font(nomeFont, tamanhoFont);
+                lblQuantidadeBode.ForeColor = Color.Black;
+                //lblQuantidadeBode.BackColor = Color.FromArgb(1,5,13,18);
+
+                img.SizeMode = PictureBoxSizeMode.StretchImage;
+
+                x += img.Width + 10;
+                alturaMax = img.Height;
+                if (x > pnlMao.Width - 100)
+                {
+                    x = 20;
+                    y += alturaMax + 10;
+                }
+                panel.Controls.Add(lblQuantidadeBode);
+                panel.Controls.Add(lblValorCarta);
+                panel.Controls.Add(img);
+            }
         }
     }
 }
