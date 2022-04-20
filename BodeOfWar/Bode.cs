@@ -133,12 +133,14 @@ namespace BodeOfWar
                     lblQuantidadeBode.ForeColor = Color.Black;
                     lblQuantidadeBode.BackColor = Color.Transparent;
 
-                    img.SizeMode = PictureBoxSizeMode.StretchImage;
+                    //img.SizeMode = PictureBoxSizeMode.StretchImage;
 
                     Panel pnlCarta = new Panel();
-                    pnlCarta.Location = new Point(x, y)
-;                   pnlCarta.Controls.Add(lblValorCarta);
+                    pnlCarta.Location = new Point(x, y);
+                    pnlCarta.Controls.Add(lblValorCarta);
                     pnlCarta.Controls.Add(lblQuantidadeBode);
+                    pnlCarta.Width = img.Width;
+                    pnlCarta.Height = img.Height;
                     pnlCarta.BackgroundImage = img.Image;
 
                     pnlCarta.Size = new Size(img.Width, pnlMao.Height);

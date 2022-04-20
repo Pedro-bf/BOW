@@ -1,4 +1,5 @@
 ﻿using System;
+using System.IO;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -32,12 +33,26 @@ namespace BodeOfWar
             string nome = txtNome.Text;
             int id = Int32.Parse(idPartida);
 
-            string idJogador = Jogo.EntrarPartida(id, nome, senha);
-            if (!(Erro(idJogador)))
+            //checa se esta re entrando em uma partida
+            string[] info = carregaLogin(id);
+            if (info == null) //partida nova
             {
+                //salva o login
+                string idJogador = Jogo.EntrarPartida(id, nome, senha);
+                if (Erro(idJogador))
+                {
+                    return;
+                }
                 string[] iten = idJogador.Split(',');
 
+                salveLogin(iten[0], iten[1], id);
                 Bode bode = new Bode(iten[0], iten[1], Int32.Parse(this.idPartida));
+                bode.Show();
+                this.Close();
+            }
+            else //logando de novo na partida
+            {
+                Bode bode = new Bode(info[0], info[1], Int32.Parse(info[2]));
                 bode.Show();
                 this.Close();
             }
@@ -52,6 +67,50 @@ namespace BodeOfWar
                 return true;
             }
             return false;
+        }
+
+        //salva em um arquivo login.txt as sequintes informações, e dessa maneira idJogador,senhaJogador,idPartida
+        private void salveLogin(string idJogador, string senhaJogador, int idPartida)
+        {
+            try
+            {
+                string text = idJogador + "," + senhaJogador + "," + idPartida.ToString();
+                string file = AppDomain.CurrentDomain.BaseDirectory.ToString() + "login.txt";
+                StreamWriter escreve = new StreamWriter(file);
+                escreve.WriteLine(text);
+                escreve.Close();
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine("Não foi possivel escrever no arquivo");
+                Console.WriteLine(e.Message);
+            }
+        }
+
+        private string[] carregaLogin(int idPartida)
+        {
+            try
+            {
+                string file = AppDomain.CurrentDomain.BaseDirectory.ToString() + "login.txt";
+                StreamReader ler = new StreamReader(file);
+                string text = ler.ReadToEnd().Trim();
+                string[] iten = text.Split(',');
+                if(Int32.Parse(iten[2]) == idPartida)
+                {
+                    Console.WriteLine("Logando na partida");
+                    return iten;
+                }
+                else
+                {
+                    Console.WriteLine("Nâo é a mesma partida");
+                    return null;
+                }
+            }catch (Exception e)
+            {
+                Console.WriteLine("Não foi possivel ler o arquivo");
+                Console.WriteLine(e.Message);
+            }
+            return null;
         }
     }
 }
