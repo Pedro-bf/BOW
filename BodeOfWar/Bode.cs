@@ -120,7 +120,6 @@ namespace BodeOfWar
                     lblValorCarta.Text = carta[0];
                     lblQuantidadeBode.Text = carta[1];
 
-                    //img.Location = new Point(x, y);
                     lblValorCarta.Location = new Point(20, 10);
                     lblValorCarta.AutoSize = true;
                     lblValorCarta.Font = new Font(nomeFont, tamanhoFont);
@@ -133,15 +132,15 @@ namespace BodeOfWar
                     lblQuantidadeBode.ForeColor = Color.Black;
                     lblQuantidadeBode.BackColor = Color.Transparent;
 
-                    //img.SizeMode = PictureBoxSizeMode.StretchImage;
+                    img.SizeMode = PictureBoxSizeMode.StretchImage;
 
                     Panel pnlCarta = new Panel();
                     pnlCarta.Location = new Point(x, y);
-                    pnlCarta.Controls.Add(lblValorCarta);
-                    pnlCarta.Controls.Add(lblQuantidadeBode);
+                    img.Controls.Add(lblValorCarta);
+                    img.Controls.Add(lblQuantidadeBode);
+                    pnlCarta.Controls.Add(img);
                     pnlCarta.Width = img.Width;
                     pnlCarta.Height = img.Height;
-                    pnlCarta.BackgroundImage = img.Image;
 
                     pnlCarta.Size = new Size(img.Width, pnlMao.Height);
 
@@ -154,11 +153,6 @@ namespace BodeOfWar
                     }
 
                     this.pnlMao.Controls.Add(pnlCarta);
-                    /*
-                    this.pnlMao.Controls.Add(lblQuantidadeBode);
-                    this.pnlMao.Controls.Add(lblValorCarta);
-                    this.pnlMao.Controls.Add(img);
-                    */
                 }
             }
         }

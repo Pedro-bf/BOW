@@ -94,6 +94,7 @@ namespace BodeOfWar
                 string file = AppDomain.CurrentDomain.BaseDirectory.ToString() + "login.txt";
                 StreamReader ler = new StreamReader(file);
                 string text = ler.ReadToEnd().Trim();
+                ler.Close();
                 string[] iten = text.Split(',');
                 if(Int32.Parse(iten[2]) == idPartida)
                 {
