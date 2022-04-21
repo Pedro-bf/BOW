@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -91,9 +91,8 @@ namespace BodeOfWar
 
                 string valores = Jogo.VerificarIlha(idJogador, senha);
 
-                if (valores.Contains("ERRO:") == false)
+                if (ToolBox.Erro(valores) == false)
                 {
-
                     lblEscolherIlha.Text = valores;
                 }
 
@@ -229,6 +228,10 @@ namespace BodeOfWar
         private void btnImg_Click(object sender, EventArgs e)
         {
             string mao = Jogo.VerificarMao(this.idJogador, this.senha);//volta o que tem na mao
+            if (ToolBox.Erro(mao))
+            {
+                return;
+            }
             mao = mao.Replace('\r', ' ');
             cartasMao = mao.Split('\n');
 
@@ -236,7 +239,58 @@ namespace BodeOfWar
 
             if (cartasMao != null)
             {
-                desenharCarta(cartasMao, pnlMao);
+                PictureBox img = new PictureBox();
+  
+                Label lblValorCarta = new Label();
+                Label lblQuantidadeBode = new Label();
+
+                img.Size = new Size(115, 165);
+
+                //pega a img correta da carta
+
+                string[] carta = EncontreCarta(cartasMao[i].Split(','));
+
+                if (carta != null)
+                {
+                    img.Image = (Image)Properties.Resources.ResourceManager.GetObject("b" + carta[2].Trim());
+
+                    lblValorCarta.Text = carta[0];
+                    lblQuantidadeBode.Text = carta[1];
+
+                    lblValorCarta.Location = new Point(20, 10);
+                    lblValorCarta.AutoSize = true;
+                    lblValorCarta.Font = new Font(nomeFont, tamanhoFont);
+                    lblValorCarta.ForeColor = Color.Black;
+                    lblValorCarta.BackColor = Color.Transparent;
+
+                    lblQuantidadeBode.Location = new Point(20, img.Height - 10);
+                    lblQuantidadeBode.AutoSize = true;
+                    lblQuantidadeBode.Font = new Font(nomeFont, tamanhoFont);
+                    lblQuantidadeBode.ForeColor = Color.Black;
+                    lblQuantidadeBode.BackColor = Color.Transparent;
+
+                    img.SizeMode = PictureBoxSizeMode.StretchImage;
+
+                    Panel pnlCarta = new Panel();
+                    pnlCarta.Location = new Point(x, y);
+                    img.Controls.Add(lblValorCarta);
+                    img.Controls.Add(lblQuantidadeBode);
+                    pnlCarta.Controls.Add(img);
+                    pnlCarta.Width = img.Width;
+                    pnlCarta.Height = img.Height;
+
+                    pnlCarta.Size = new Size(img.Width, pnlMao.Height);
+
+                    x += img.Width + 10;
+                    alturaMax = img.Height;
+                    if (x > pnlMao.Width - 100)
+                    {
+                        x = 20;
+                        y += alturaMax + 10;
+                    }
+
+                    this.pnlMao.Controls.Add(pnlCarta);
+                }
             }
         }
 
@@ -272,10 +326,8 @@ namespace BodeOfWar
                 {
                     string[] carta = EncontreCarta(cartasMao[i].Split(','), 0);
                     string mensagem = Jogo.Jogar(idJogador, senha, Int32.Parse(carta[0]));
-                    this.valorBode = valorBod;
-                    if (mensagem.Contains("ERRO"))
+                    if (ToolBox.Erro(mensagem))
                     {
-                        MessageBox.Show(mensagem);
                         return;
                     }
                     
@@ -325,7 +377,7 @@ namespace BodeOfWar
         private string[] EncontreCarta(string[] cartaMao, int idChecagem)
         {
 
-            string cartas = Jogo.ListarCartas();//todas as cartas do jogo valor, quantidade bode, idImagem
+            string cartas = Jogo.ListarCartas();//todas as cartas do jogo -> valor, quantidade bode, idImagem
             cartas = cartas.Replace('\r', ' ');
             string[] cartasValores = cartas.Split('\n');
 
