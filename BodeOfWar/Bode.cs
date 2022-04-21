@@ -72,9 +72,8 @@ namespace BodeOfWar
 
                 string valores = Jogo.VerificarIlha(idJogador, senha);
 
-                if (valores.Contains("ERRO:") == false)
+                if (ToolBox.Erro(valores) == false)
                 {
-                    
                     lblEscolherIlha.Text = valores;
                 }
 
@@ -91,6 +90,10 @@ namespace BodeOfWar
             int tamanhoFont = 10;
 
             string mao = Jogo.VerificarMao(this.idJogador, this.senha);//volta o que tem na mao
+            if (ToolBox.Erro(mao))
+            {
+                return;
+            }
             mao = mao.Replace('\r', ' ');
             cartasMao = mao.Split('\n');
 
@@ -183,9 +186,8 @@ namespace BodeOfWar
                 {
                     string[] carta = EncontreCarta(cartasMao[i].Split(','));
                     string mensagem = Jogo.Jogar(idJogador, senha, Int32.Parse(carta[0]));
-                    if (mensagem.Contains("ERRO"))
+                    if (ToolBox.Erro(mensagem))
                     {
-                        MessageBox.Show(mensagem);
                         return;
                     }
 
@@ -219,7 +221,7 @@ namespace BodeOfWar
         private string[] EncontreCarta(string[] cartaMao)
         {
 
-            string cartas = Jogo.ListarCartas();//todas as cartas do jogo valor, quantidade bode, idImagem
+            string cartas = Jogo.ListarCartas();//todas as cartas do jogo -> valor, quantidade bode, idImagem
             cartas = cartas.Replace('\r', ' ');
             string[] cartasValores = cartas.Split('\n');
 

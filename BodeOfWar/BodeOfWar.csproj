@@ -110,6 +110,7 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ToolBox.cs" />
     <EmbeddedResource Include="Bode.resx">
       <DependentUpon>Bode.cs</DependentUpon>
     </EmbeddedResource>
