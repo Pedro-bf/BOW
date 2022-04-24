@@ -45,6 +45,7 @@ namespace BodeOfWar
             this.lblQtdBodes = new System.Windows.Forms.Label();
             this.lblBodes = new System.Windows.Forms.Label();
             this.pnlMesa = new System.Windows.Forms.Panel();
+            this.btnJogarCarta = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // lblJogadorVez
@@ -189,12 +190,23 @@ namespace BodeOfWar
             this.pnlMesa.Size = new System.Drawing.Size(639, 436);
             this.pnlMesa.TabIndex = 31;
             // 
+            // btnJogarCarta
+            // 
+            this.btnJogarCarta.Location = new System.Drawing.Point(304, 522);
+            this.btnJogarCarta.Name = "btnJogarCarta";
+            this.btnJogarCarta.Size = new System.Drawing.Size(75, 23);
+            this.btnJogarCarta.TabIndex = 39;
+            this.btnJogarCarta.Text = "Jogar";
+            this.btnJogarCarta.UseVisualStyleBackColor = true;
+            this.btnJogarCarta.Click += new System.EventHandler(this.btnJogarCarta_Click);
+            // 
             // Bode
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoScroll = true;
             this.ClientSize = new System.Drawing.Size(1289, 759);
+            this.Controls.Add(this.btnJogarCarta);
             this.Controls.Add(this.pnlMesa);
             this.Controls.Add(this.lblQtdBodes);
             this.Controls.Add(this.lblBodes);
@@ -240,5 +252,6 @@ namespace BodeOfWar
         private System.Windows.Forms.Label lblQtdBodes;
         private System.Windows.Forms.Label lblBodes;
         private System.Windows.Forms.Panel pnlMesa;
+        private System.Windows.Forms.Button btnJogarCarta;
     }
 }

@@ -22,8 +22,9 @@ namespace BodeOfWar
 
         private string estadoJogo;
 
-        private int valorBode;
+       // private int valorBode;
         private string[] cartasMao;
+        private string[] cartasMesa;
         private int idJogador;
         private string senha;
         private int idPartida;
@@ -59,6 +60,7 @@ namespace BodeOfWar
         private void btnIniciar_Click(object sender, EventArgs e)
         {
             var retorno = Jogo.IniciarPartida(idJogador, this.senha);
+            btnImg_Click(sender, e);
             update(sender, e);
         }
 
@@ -67,6 +69,13 @@ namespace BodeOfWar
 
             string verificarVez = Jogo.VerificarVez(this.idPartida);
             string[] iten = verificarVez.Split(',');
+            int idJogadorVez = 0;
+
+            if (ToolBox.ErroSemMensagem(verificarVez) == false)
+            {
+                idJogadorVez = Int32.Parse(iten[1]);
+            }
+            
 
             txtHistorico.Text = Jogo.ExibirNarracao(this.idPartida);
 
@@ -101,7 +110,7 @@ namespace BodeOfWar
                 mesaIlha = mesaIlha.Trim();
                 string[] mesa = mesaIlha.Split('\n');
 
-                string[] cartaMesa = new string[4];
+                cartasMesa = new string[4];
                 int i = 0;
                 bool desenharMesa = false;
                 foreach ( string carta in mesa)
@@ -131,14 +140,20 @@ namespace BodeOfWar
                                 auxCarta += elemento;
                             }
                         }
-                        cartaMesa[i] = auxCarta;
+                        cartasMesa[i] = auxCarta;
                         i++;
                     }
                 }
 
+                //if(idJogador == idJogadorVez)
+                //{
+                //    btnImg_Click(sender, e);
+                //    jogarCarta(cartaMesa);
+                //}
+
                 int contador = 0;
                 //pnlMesa.Controls.Clear();
-                foreach (string item in cartaMesa)
+                foreach (string item in cartasMesa)
                 {
 
                     if (item == null || UltimoCartaMesa[contador] == null)
@@ -160,15 +175,15 @@ namespace BodeOfWar
 
                 if (desenharMesa == true)
                 {
-                    DesenharCarta(cartaMesa, pnlMesa);
-                    UltimoCartaMesa = cartaMesa;
+                    DesenharCarta(cartasMesa, pnlMesa);
+                    UltimoCartaMesa = cartasMesa;
                 }
 
                 if (estadoJogo.Contains('I') || estadoJogo.Contains('F')) 
                 {
                     if (checarQtdBode)
                     {
-                        QtsBode(qtdBode, mesaIlha);
+                        QtsBode(qtdBode);
                     }
                     this.checarQtdBode = false;
 
@@ -195,23 +210,16 @@ namespace BodeOfWar
                     break;
                 }
             }
+
         }
 
-        private void QtsBode(int quantidadeBode, string mesaIlha)
+        private void QtsBode(int quantidadeBode)
         {
-            mesaIlha = mesaIlha.Replace('\r', ' ');
-            string[] bodes = mesaIlha.Split('\n');
-            for (int i = 1; i < bodes.Length-1; i++)
+            for (int i = 1; i < cartasMesa.Length-1; i++)
             {
-                string[] bodeJogado = bodes[i].Split(',');
-                if (Int32.Parse(bodeJogado[1]) >this.valorBode)
-                {
-                    return;
-                }
+                string[] bodeJogado = cartasMesa[i].Split(',');
 
-                string[] carta = EncontreCarta(bodeJogado,1);
-
-                quantidadeBode += Int32.Parse( carta[1]);
+                quantidadeBode += Int32.Parse( bodeJogado[1]);
             }
             lblQtdBodes.Text = quantidadeBode.ToString();
         }
@@ -223,6 +231,7 @@ namespace BodeOfWar
                 return;
             }
             mao = mao.Replace('\r', ' ');
+            mao = mao.Trim();
             cartasMao = mao.Split('\n');
 
             this.pnlMao.Controls.Clear();
@@ -407,6 +416,63 @@ namespace BodeOfWar
 
                 panel.Controls.Add(pnlCarta);
             }
+        }
+
+        private void jogarCarta(string[] cartasMesa)
+        {
+            int menorCartaMesa = 51;
+            foreach(string carta in cartasMesa)//achar a menor carta da mesa
+            {
+                if(carta != null)
+                {
+                    string[] elemento = carta.Split(',');
+                    int valorCarta = Int32.Parse(elemento[0]);
+                    if(valorCarta < menorCartaMesa)
+                    {
+                        menorCartaMesa = valorCarta;
+                    }
+                }
+            }
+            if (menorCartaMesa == 51)//jogar a menor carta se a mesa estiver vazia
+            {
+                Jogo.Jogar(idJogador, senha, Int32.Parse(cartasMao[0]));
+                return;
+            }
+            
+            List<int> menorValoresMao= new List<int>();
+            List<int> maiorValoresMao= new List<int>();
+            foreach(string carta in cartasMao)//separar as cartas na mao em dois grupos
+            {
+                int valorCarta = Int32.Parse(carta);
+                if (valorCarta < menorCartaMesa)
+                {
+                    menorValoresMao.Add(valorCarta);
+                }
+                else
+                {
+                    maiorValoresMao.Add(valorCarta);
+                }
+            }
+
+            if (menorValoresMao.Count > 0)
+            {
+                int cartaJogar = menorValoresMao.Last<int>();
+                Jogo.Jogar(idJogador,senha,cartaJogar);
+                return;
+            }
+            else
+            {
+                int cartaJogar = maiorValoresMao.First<int>();
+                Jogo.Jogar(idJogador, senha, cartaJogar);
+                return;
+            }
+        }
+
+        private void btnJogarCarta_Click(object sender, EventArgs e)
+        {
+            btnImg_Click(sender, e);
+            jogarCarta(cartasMesa);
+            btnImg_Click(sender, e);
         }
     }
 }

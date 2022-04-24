@@ -20,6 +20,14 @@ namespace BodeOfWar
             }
             return false;
         }
+        public static bool ErroSemMensagem(string erro)
+        {
+            if (erro.Contains("ERRO:"))
+            { 
+                return true;
+            }
+            return false;
+        }
 
         //salva em um arquivo login.txt as sequintes informações, e dessa maneira idJogador,senhaJogador,idPartida
         public static void SalvaLogin(string idJogador, string senhaJogador, int idPartida)
