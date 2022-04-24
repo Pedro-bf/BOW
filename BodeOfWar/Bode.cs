@@ -215,8 +215,12 @@ namespace BodeOfWar
 
         private void QtsBode(int quantidadeBode)
         {
-            for (int i = 1; i < cartasMesa.Length-1; i++)
+            for (int i = 0; i < cartasMesa.Length-1; i++)
             {
+                if (cartasMesa[i] == null)
+                {
+                    break;
+                }
                 string[] bodeJogado = cartasMesa[i].Split(',');
 
                 quantidadeBode += Int32.Parse( bodeJogado[1]);
