@@ -44,14 +44,14 @@ namespace BodeOfWar
                 }
                 string[] iten = idJogador.Split(',');
 
-                ToolBox.SalvaLogin(iten[0], iten[1], id);
-                Bode bode = new Bode(iten[0], iten[1], Int32.Parse(this.idPartida));
+                ToolBox.SalvaLogin(iten[0], iten[1], id, 0);
+                Bode bode = new Bode(iten[0], iten[1], Int32.Parse(this.idPartida), 0);
                 bode.Show();
                 this.Close();
             }
             else //logando de novo na partida
             {
-                Bode bode = new Bode(info[0], info[1], Int32.Parse(info[2]));
+                Bode bode = new Bode(info[0], info[1], Int32.Parse(info[2]), Int32.Parse(info[3]));
                 bode.Show();
                 this.Close();
             }

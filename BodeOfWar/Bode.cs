@@ -22,7 +22,7 @@ namespace BodeOfWar
 
         private string estadoJogo;
 
-       // private int valorBode;
+        private int valorBode;
         private string[] cartasMao;
         private string[] cartasMesa;
         private int idJogador;
@@ -42,13 +42,16 @@ namespace BodeOfWar
             TimerChecarVez.Start();
         }
 
-        public Bode(string idJogador, string senha, int idPartida)
+        public Bode(string idJogador, string senha, int idPartida, int qtdBode)
         {
             this.idJogador = Int32.Parse(idJogador);
             this.senha = senha;
             this.idPartida = idPartida;
             this.UltimoCartaMesa = new string[4];
+            this.valorBode = 0;
+            this.valorBode = qtdBode;
             InitializeComponent();
+            lblQtdBodes.Text = valorBode.ToString();
         }
 
         private void Bode_Load(object sender, EventArgs e)
@@ -66,7 +69,7 @@ namespace BodeOfWar
 
         private void update(object sender, EventArgs e)
         {
-
+            TimerChecarVez.Enabled = false;
             string verificarVez = Jogo.VerificarVez(this.idPartida);
             string[] iten = verificarVez.Split(',');
             int idJogadorVez = 0;
@@ -179,11 +182,11 @@ namespace BodeOfWar
                     UltimoCartaMesa = cartasMesa;
                 }
 
-                if (estadoJogo.Contains('I') || estadoJogo.Contains('F')) 
+                if (estadoJogo.Contains('I') || estadoJogo.Contains('F') || estadoJogo.Contains('E')) 
                 {
                     if (checarQtdBode)
                     {
-                        QtsBode(qtdBode);
+                        QtdBode(qtdBode);
                     }
                     this.checarQtdBode = false;
 
@@ -210,10 +213,10 @@ namespace BodeOfWar
                     break;
                 }
             }
-
+            TimerChecarVez.Enabled = true;
         }
 
-        private void QtsBode(int quantidadeBode)
+        private void QtdBode(int quantidadeBode)
         {
             for (int i = 0; i < cartasMesa.Length-1; i++)
             {
@@ -221,10 +224,16 @@ namespace BodeOfWar
                 {
                     break;
                 }
-                string[] bodeJogado = cartasMesa[i].Split(',');
 
-                quantidadeBode += Int32.Parse( bodeJogado[1]);
+                string[] bodeJogado = cartasMesa[i].Split(',');
+                //se o nosso valor do nosso bode for menor que outro jogado sai, pos perdemos a partida
+                if (valorBode < Int32.Parse(bodeJogado[0]) && valorBode != Int32.Parse(bodeJogado[0]))
+                {
+                    return;
+                }
+                quantidadeBode += Int32.Parse(bodeJogado[1]);
             }
+            ToolBox.SalvaLogin(idJogador.ToString(), senha, idPartida, quantidadeBode);
             lblQtdBodes.Text = quantidadeBode.ToString();
         }
         private void btnImg_Click(object sender, EventArgs e)
@@ -278,6 +287,8 @@ namespace BodeOfWar
                 {
                     string[] carta = EncontreCarta(cartasMao[i].Split(','), 0);
                     string mensagem = Jogo.Jogar(idJogador, senha, Int32.Parse(carta[0]));
+                    //salva o valor do bode que foi jogado
+                    this.valorBode = valor;
                     if (ToolBox.Erro(mensagem))
                     {
                         return;
@@ -440,6 +451,7 @@ namespace BodeOfWar
             if (menorCartaMesa == 51)//jogar a menor carta se a mesa estiver vazia
             {
                 Jogo.Jogar(idJogador, senha, Int32.Parse(cartasMao[0]));
+                this.valorBode = Int32.Parse(cartasMao[0]);
                 return;
             }
             
@@ -462,12 +474,14 @@ namespace BodeOfWar
             {
                 int cartaJogar = menorValoresMao.Last<int>();
                 Jogo.Jogar(idJogador,senha,cartaJogar);
+                this.valorBode = cartaJogar;
                 return;
             }
             else
             {
                 int cartaJogar = maiorValoresMao.First<int>();
                 Jogo.Jogar(idJogador, senha, cartaJogar);
+                this.valorBode = cartaJogar;
                 return;
             }
         }
@@ -477,6 +491,11 @@ namespace BodeOfWar
             btnImg_Click(sender, e);
             jogarCarta(cartasMesa);
             btnImg_Click(sender, e);
+        }
+
+        private void btnTeste_Click(object sender, EventArgs e)
+        {
+            ToolBox.Erro("ERRO: " + estadoJogo);
         }
     }
 }

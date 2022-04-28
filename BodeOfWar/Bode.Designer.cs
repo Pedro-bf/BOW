@@ -46,6 +46,7 @@ namespace BodeOfWar
             this.lblBodes = new System.Windows.Forms.Label();
             this.pnlMesa = new System.Windows.Forms.Panel();
             this.btnJogarCarta = new System.Windows.Forms.Button();
+            this.btnTeste = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // lblJogadorVez
@@ -200,12 +201,23 @@ namespace BodeOfWar
             this.btnJogarCarta.UseVisualStyleBackColor = true;
             this.btnJogarCarta.Click += new System.EventHandler(this.btnJogarCarta_Click);
             // 
+            // btnTeste
+            // 
+            this.btnTeste.Location = new System.Drawing.Point(27, 251);
+            this.btnTeste.Name = "btnTeste";
+            this.btnTeste.Size = new System.Drawing.Size(53, 26);
+            this.btnTeste.TabIndex = 40;
+            this.btnTeste.Text = "Teste";
+            this.btnTeste.UseVisualStyleBackColor = true;
+            this.btnTeste.Click += new System.EventHandler(this.btnTeste_Click);
+            // 
             // Bode
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoScroll = true;
-            this.ClientSize = new System.Drawing.Size(1289, 759);
+            this.ClientSize = new System.Drawing.Size(1289, 749);
+            this.Controls.Add(this.btnTeste);
             this.Controls.Add(this.btnJogarCarta);
             this.Controls.Add(this.pnlMesa);
             this.Controls.Add(this.lblQtdBodes);
@@ -225,7 +237,7 @@ namespace BodeOfWar
             this.Controls.Add(this.btnIniciar);
             this.MaximizeBox = false;
             this.MaximumSize = new System.Drawing.Size(1920, 1080);
-            this.MinimumSize = new System.Drawing.Size(1305, 800);
+            this.MinimumSize = new System.Drawing.Size(1305, 766);
             this.Name = "Bode";
             this.Text = "Bode";
             this.Load += new System.EventHandler(this.Bode_Load);
@@ -253,5 +265,6 @@ namespace BodeOfWar
         private System.Windows.Forms.Label lblBodes;
         private System.Windows.Forms.Panel pnlMesa;
         private System.Windows.Forms.Button btnJogarCarta;
+        private System.Windows.Forms.Button btnTeste;
     }
 }

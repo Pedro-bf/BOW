@@ -29,12 +29,12 @@ namespace BodeOfWar
             return false;
         }
 
-        //salva em um arquivo login.txt as sequintes informações, e dessa maneira idJogador,senhaJogador,idPartida
-        public static void SalvaLogin(string idJogador, string senhaJogador, int idPartida)
+        //salva em um arquivo login.txt as sequintes informações, e dessa maneira idJogador,senhaJogador,idPartida, valorBode
+        public static void SalvaLogin(string idJogador, string senhaJogador, int idPartida, int valorBode)
         {
             try
             {
-                string text = idJogador + "," + senhaJogador + "," + idPartida.ToString();
+                string text = idJogador + "," + senhaJogador + "," + idPartida.ToString() + "," + valorBode.ToString();
                 string file = AppDomain.CurrentDomain.BaseDirectory.ToString() + "login.txt";
                 StreamWriter escreve = new StreamWriter(file);
                 escreve.WriteLine(text);
