@@ -28,6 +28,7 @@ namespace BodeOfWar
         private int idJogador;
         private string senha;
         private int idPartida;
+        //private int qtdJogadores;
 
         private bool checarQtdBode = true;
         private bool jogando = true;
@@ -66,6 +67,14 @@ namespace BodeOfWar
             var retorno = Jogo.IniciarPartida(idJogador, this.senha);
             btnImg_Click(sender, e);
             update(sender, e);
+
+            string[] jogadores = Jogo.ListarJogadores(idPartida).Split('\r');
+            //this.qtdJogadores = 0;  tentei usar a quantidade de jogadores
+            //this.qtdJogadores = jogadores.Length - 1;
+            //foreach (string jogador in jogadores)//conta a quantidade de jogadores na partida
+            //{
+            //    this.qtdJogadores++;
+            //}
         }
 
         private void update(object sender, EventArgs e)
@@ -187,8 +196,21 @@ namespace BodeOfWar
                     DesenharCarta(cartasMesa, pnlMesa);
                     UltimoCartaMesa = cartasMesa;
                 }
+                /*
+                int cartasJogadas = 0;//cartas na mesa
+                foreach (string cartaJogada in cartasMesa)
+                {
+                    if(cartaJogada != null)
+                    {
+                        cartasJogadas += 1;
+                    }
+                    else
+                    {
+                        break;
+                    }
+                }*/
 
-                if (estadoJogo.Contains('I') || estadoJogo.Contains('F') || estadoJogo.Contains('E')) 
+                if (/*(qtdJogadores == cartasJogadas && estadoJogo.Contains('B')) ||*/ estadoJogo.Contains('I') || estadoJogo.Contains('F') || estadoJogo.Contains('E')) 
                 {
                     if (checarQtdBode)
                     {
@@ -497,7 +519,7 @@ namespace BodeOfWar
             btnImg_Click(sender, e);
             jogarCarta(cartasMesa);
             btnImg_Click(sender, e);
-            update(sender, e);
+            
         }
 
         private void btnTeste_Click(object sender, EventArgs e)
