@@ -31,6 +31,7 @@ namespace BodeOfWar
 
         private bool checarQtdBode = true;
         private bool jogando = true;
+        private bool escolheIlha = false;
 
         private string[] UltimoCartaMesa;
 
@@ -106,16 +107,11 @@ namespace BodeOfWar
                 if (valores.Contains("ERRO:") == false)
                 {
                     lblEscolherIlha.Text = valores;
-                    //pegar os dois valores das ilhas que oservidor retorna
-                    string[] valorIlha = valores.Split(',');
-                    if (Int32.Parse(valorIlha[0]) >  Int32.Parse(valorIlha[1]))
-                    {
-                        EscolhaIlha(valorIlha[1]);
-                    }
-                    else
-                    {
-                        EscolhaIlha(valorIlha[0]);
-                    }
+                    escolheIlha = true;
+                }
+                else
+                {
+                    escolheIlha = false;
                 }
 
                 string mesaIlha = Jogo.VerificarMesa(idPartida);
@@ -501,6 +497,7 @@ namespace BodeOfWar
             btnImg_Click(sender, e);
             jogarCarta(cartasMesa);
             btnImg_Click(sender, e);
+            update(sender, e);
         }
 
         private void btnTeste_Click(object sender, EventArgs e)
@@ -510,7 +507,19 @@ namespace BodeOfWar
 
         private void btnEscolherIlha_Click(object sender, EventArgs e)
         {
-            //Jogo.
+            string valores = Jogo.VerificarIlha(idJogador, senha);
+            if (escolheIlha == true)
+            {
+                string[] valorIlha = valores.Split(',');
+                if (Int32.Parse(valorIlha[0]) > Int32.Parse(valorIlha[1]))
+                {
+                    EscolhaIlha(valorIlha[1]);
+                }
+                else
+                {
+                    EscolhaIlha(valorIlha[0]);
+                }
+            }
         }
     }
 }
