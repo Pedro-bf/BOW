@@ -47,6 +47,7 @@ namespace BodeOfWar
             this.pnlMesa = new System.Windows.Forms.Panel();
             this.btnJogarCarta = new System.Windows.Forms.Button();
             this.btnTeste = new System.Windows.Forms.Button();
+            this.btnEscolherIlha = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // lblJogadorVez
@@ -115,7 +116,7 @@ namespace BodeOfWar
             // 
             // btnConfirmar
             // 
-            this.btnConfirmar.Location = new System.Drawing.Point(97, 365);
+            this.btnConfirmar.Location = new System.Drawing.Point(62, 365);
             this.btnConfirmar.Name = "btnConfirmar";
             this.btnConfirmar.Size = new System.Drawing.Size(75, 23);
             this.btnConfirmar.TabIndex = 31;
@@ -211,12 +212,23 @@ namespace BodeOfWar
             this.btnTeste.UseVisualStyleBackColor = true;
             this.btnTeste.Click += new System.EventHandler(this.btnTeste_Click);
             // 
+            // btnEscolherIlha
+            // 
+            this.btnEscolherIlha.Location = new System.Drawing.Point(143, 365);
+            this.btnEscolherIlha.Name = "btnEscolherIlha";
+            this.btnEscolherIlha.Size = new System.Drawing.Size(75, 23);
+            this.btnEscolherIlha.TabIndex = 41;
+            this.btnEscolherIlha.Text = "Escolher Ilha";
+            this.btnEscolherIlha.UseVisualStyleBackColor = true;
+            this.btnEscolherIlha.Click += new System.EventHandler(this.btnEscolherIlha_Click);
+            // 
             // Bode
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoScroll = true;
             this.ClientSize = new System.Drawing.Size(1289, 749);
+            this.Controls.Add(this.btnEscolherIlha);
             this.Controls.Add(this.btnTeste);
             this.Controls.Add(this.btnJogarCarta);
             this.Controls.Add(this.pnlMesa);
@@ -266,5 +278,6 @@ namespace BodeOfWar
         private System.Windows.Forms.Panel pnlMesa;
         private System.Windows.Forms.Button btnJogarCarta;
         private System.Windows.Forms.Button btnTeste;
+        private System.Windows.Forms.Button btnEscolherIlha;
     }
 }

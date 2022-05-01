@@ -106,6 +106,16 @@ namespace BodeOfWar
                 if (valores.Contains("ERRO:") == false)
                 {
                     lblEscolherIlha.Text = valores;
+                    //pegar os dois valores das ilhas que oservidor retorna
+                    string[] valorIlha = valores.Split(',');
+                    if (Int32.Parse(valorIlha[0]) >  Int32.Parse(valorIlha[1]))
+                    {
+                        EscolhaIlha(valorIlha[1]);
+                    }
+                    else
+                    {
+                        EscolhaIlha(valorIlha[0]);
+                    }
                 }
 
                 string mesaIlha = Jogo.VerificarMesa(idPartida);
@@ -496,6 +506,11 @@ namespace BodeOfWar
         private void btnTeste_Click(object sender, EventArgs e)
         {
             ToolBox.Erro("ERRO: " + estadoJogo);
+        }
+
+        private void btnEscolherIlha_Click(object sender, EventArgs e)
+        {
+            //Jogo.
         }
     }
 }
