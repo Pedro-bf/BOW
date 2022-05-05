@@ -28,7 +28,8 @@ namespace BodeOfWar
         private int idJogador;
         private string senha;
         private int idPartida;
-        //private int qtdJogadores;
+        private int idRodada;
+        private int qtdJogadores;
 
         private bool checarQtdBode = true;
         private bool jogando = true;
@@ -52,6 +53,7 @@ namespace BodeOfWar
             this.UltimoCartaMesa = new string[4];
             this.valorBode = 0;
             this.valorBode = qtdBode;
+            this.idRodada = 0;
             InitializeComponent();
             lblQtdBodes.Text = valorBode.ToString();
         }
@@ -69,12 +71,8 @@ namespace BodeOfWar
             update(sender, e);
 
             string[] jogadores = Jogo.ListarJogadores(idPartida).Split('\r');
-            //this.qtdJogadores = 0;  tentei usar a quantidade de jogadores
-            //this.qtdJogadores = jogadores.Length - 1;
-            //foreach (string jogador in jogadores)//conta a quantidade de jogadores na partida
-            //{
-            //    this.qtdJogadores++;
-            //}
+            this.qtdJogadores = 0;
+            this.qtdJogadores = jogadores.Length - 1;
         }
 
         private void update(object sender, EventArgs e)
@@ -89,7 +87,6 @@ namespace BodeOfWar
                 idJogadorVez = Int32.Parse(iten[1]);
             }
             
-
             txtHistorico.Text = Jogo.ExibirNarracao(this.idPartida);
 
             string retorno = Jogo.ListarPartidas("E");
@@ -105,7 +102,6 @@ namespace BodeOfWar
                     qtdBode = 0;
                 }
                 
-
                 lblJogadorVez.Text = iten[1];
                 string temp = iten[3].Replace('\r', ' ');
                 temp = temp.Replace('\n', ' ');
@@ -123,7 +119,9 @@ namespace BodeOfWar
                     escolheIlha = false;
                 }
 
-                string mesaIlha = Jogo.VerificarMesa(idPartida);
+                string mesaIlha = Jogo.VerificarMesa(idPartida, idRodada);
+                ToolBox.Erro(mesaIlha);
+                this.idRodada += 1; //atualiza a rodada para o proximo uso
                 mesaIlha = mesaIlha.Replace('\r', ' ');
                 mesaIlha = mesaIlha.Trim();
                 string[] mesa = mesaIlha.Split('\n');
@@ -163,14 +161,7 @@ namespace BodeOfWar
                     }
                 }
 
-                //if(idJogador == idJogadorVez)
-                //{
-                //    btnImg_Click(sender, e);
-                //    jogarCarta(cartaMesa);
-                //}
-
                 int contador = 0;
-                //pnlMesa.Controls.Clear();
                 foreach (string item in cartasMesa)
                 {
 
@@ -196,7 +187,8 @@ namespace BodeOfWar
                     DesenharCarta(cartasMesa, pnlMesa);
                     UltimoCartaMesa = cartasMesa;
                 }
-                /*
+
+                #region
                 int cartasJogadas = 0;//cartas na mesa
                 foreach (string cartaJogada in cartasMesa)
                 {
@@ -208,9 +200,11 @@ namespace BodeOfWar
                     {
                         break;
                     }
-                }*/
+                }
+                #endregion
 
-                if (/*(qtdJogadores == cartasJogadas && estadoJogo.Contains('B')) ||*/ estadoJogo.Contains('I') || estadoJogo.Contains('F') || estadoJogo.Contains('E')) 
+                if ((qtdJogadores == cartasJogadas && estadoJogo.Contains('B')) ||
+                     estadoJogo.Contains('I') || estadoJogo.Contains('F') || estadoJogo.Contains('E')) 
                 {
                     if (checarQtdBode)
                     {
@@ -519,7 +513,6 @@ namespace BodeOfWar
             btnImg_Click(sender, e);
             jogarCarta(cartasMesa);
             btnImg_Click(sender, e);
-            
         }
 
         private void btnTeste_Click(object sender, EventArgs e)
@@ -533,13 +526,16 @@ namespace BodeOfWar
             if (escolheIlha == true)
             {
                 string[] valorIlha = valores.Split(',');
-                if (Int32.Parse(valorIlha[0]) > Int32.Parse(valorIlha[1]))
+                if (ToolBox.Erro(valores) == false)
                 {
-                    EscolhaIlha(valorIlha[1]);
-                }
-                else
-                {
-                    EscolhaIlha(valorIlha[0]);
+                    if (Int32.Parse(valorIlha[0]) > Int32.Parse(valorIlha[1]))
+                    {
+                        EscolhaIlha(valorIlha[1]);
+                    }
+                    else
+                    {
+                        EscolhaIlha(valorIlha[0]);
+                    }
                 }
             }
         }

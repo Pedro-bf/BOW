@@ -249,7 +249,7 @@ namespace BodeOfWar
             this.Controls.Add(this.btnIniciar);
             this.MaximizeBox = false;
             this.MaximumSize = new System.Drawing.Size(1920, 1080);
-            this.MinimumSize = new System.Drawing.Size(1305, 766);
+            this.MinimumSize = new System.Drawing.Size(1305, 718);
             this.Name = "Bode";
             this.Text = "Bode";
             this.Load += new System.EventHandler(this.Bode_Load);
