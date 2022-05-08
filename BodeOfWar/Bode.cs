@@ -597,6 +597,8 @@ namespace BodeOfWar
                     }
                 }
             }
+        }
+            /*
         private void pictureBox1_Click(object sender, EventArgs e)
         {
 
@@ -626,5 +628,6 @@ namespace BodeOfWar
         {
 
         }
+            */
     }
 }

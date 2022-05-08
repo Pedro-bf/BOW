@@ -105,7 +105,6 @@ namespace BodeOfWar
             this.btnIniciar.UseVisualStyleBackColor = true;
             this.btnIniciar.Click += new System.EventHandler(this.btnIniciar_Click);
             this.lblVerificarVez.Text = "Turno de:";
-            this.lblVerificarVez.Click += new System.EventHandler(this.lblVerificarVez_Click);
 
             // 
             // txtHistorico
@@ -206,7 +205,6 @@ namespace BodeOfWar
             this.lblQtdBodes.Size = new System.Drawing.Size(28, 33);
             this.lblQtdBodes.TabIndex = 38;
             this.lblQtdBodes.Text = "0";
-            this.lblQtdBodes.Click += new System.EventHandler(this.lblQtdBodes_Click);
             // 
             // panel2
             // 
@@ -287,7 +285,6 @@ namespace BodeOfWar
             this.lblBodesJogador5.Size = new System.Drawing.Size(97, 20);
             this.lblBodesJogador5.TabIndex = 43;
             this.lblBodesJogador5.Text = "Jogador 5";
-            this.lblBodesJogador5.Click += new System.EventHandler(this.lblBodesJogador5_Click);
             // 
             // panel6
             // 
@@ -374,7 +371,6 @@ namespace BodeOfWar
             this.panel4.Name = "panel4";
             this.panel4.Size = new System.Drawing.Size(200, 80);
             this.panel4.TabIndex = 44;
-            this.panel4.Paint += new System.Windows.Forms.PaintEventHandler(this.panel4_Paint);
             // 
             // lblBodeJ22
             // 
@@ -425,7 +421,6 @@ namespace BodeOfWar
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(200, 144);
             this.panel3.TabIndex = 43;
-            this.panel3.Paint += new System.Windows.Forms.PaintEventHandler(this.panel3_Paint);
             // 
             // lblVocê
             // 
@@ -511,7 +506,6 @@ namespace BodeOfWar
             this.Controls.Add(this.lblQtdBodes);
             this.Controls.Add(this.lblBodes);
             this.Controls.Add(this.lblValorIlha);
-            this.Controls.Add(this.lblIlha);
             this.Controls.Add(this.lblEscolherIlha);
             this.Controls.Add(this.lblEscolha);
             this.Controls.Add(this.txtEscolha);
