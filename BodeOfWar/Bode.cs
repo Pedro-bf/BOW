@@ -41,7 +41,7 @@ namespace BodeOfWar
         {
             TimerChecarVez = new Timer();
             TimerChecarVez.Tick += new EventHandler(update);
-            TimerChecarVez.Interval = 5000; //5s 
+            TimerChecarVez.Interval = 2500; //1s 
             TimerChecarVez.Start();
         }
 
@@ -53,7 +53,8 @@ namespace BodeOfWar
             this.UltimoCartaMesa = new string[4];
             this.valorBode = 0;
             this.valorBode = qtdBode;
-            this.idRodada = 0;
+            this.idRodada = 1;
+            this.qtdJogadores = 0;
             InitializeComponent();
             lblQtdBodes.Text = valorBode.ToString();
         }
@@ -77,33 +78,55 @@ namespace BodeOfWar
 
         private void update(object sender, EventArgs e)
         {
+            string[] jogadores = Jogo.ListarJogadores(idPartida).Split('\r');
+            this.qtdJogadores = jogadores.Length - 1;
+
             TimerChecarVez.Enabled = false;
             string verificarVez = Jogo.VerificarVez(this.idPartida);
-            string[] iten = verificarVez.Split(',');
+            if (ToolBox.ErroSemMensagem(verificarVez) == true) return; //checa se a partida não iniciou
+            string[] partida = verificarVez.Split(',');
+            
+            //checa se a partida termino
+            if (partida[3].Contains('E'))
+            {
+                string temp = Jogo.ListarJogadores(this.idRodada);
+                temp = temp.Replace('\n', ' ');
+                temp = temp.Replace('\r', ' ');
+                temp = temp.Trim();
+
+                string[] listjogadores = temp.Split(',');
+                //Partidade encerrada
+                for(int i = 0; i < listjogadores.Length; i += 2)
+                {
+                    if (listjogadores[i].Equals(partida[1]))
+                    {
+                        MessageBox.Show($"Partida encerrada! \n Jogador {listjogadores[i+1]} venceu.");
+                        i = listjogadores.Length;
+                    }
+                }
+                return;
+            }
+
             int idJogadorVez = 0;
 
             if (ToolBox.ErroSemMensagem(verificarVez) == false)
             {
-                idJogadorVez = Int32.Parse(iten[1]);
+                idJogadorVez = Int32.Parse(partida[1]);
             }
             
             txtHistorico.Text = Jogo.ExibirNarracao(this.idPartida);
 
-            string retorno = Jogo.ListarPartidas("E");
-            retorno = retorno.Replace("\r", "");
-            retorno = retorno.Substring(0, retorno.Length - 1);
-            string[] partidas = retorno.Split('\n');
-
-            if (iten[0].Contains('J'))
+            if (partida[0].Contains('J'))
             {
+                btnImg_Click(sender, e);
                 int qtdBode;
                 if (Int32.TryParse(lblQtdBodes.Text, out qtdBode) == false)
                 {
                     qtdBode = 0;
                 }
                 
-                lblJogadorVez.Text = iten[1];
-                string temp = iten[3].Replace('\r', ' ');
+                lblJogadorVez.Text = partida[1];
+                string temp = partida[3].Replace('\r', ' ');
                 temp = temp.Replace('\n', ' ');
                 estadoJogo = temp.Trim();
 
@@ -112,6 +135,7 @@ namespace BodeOfWar
                 if (valores.Contains("ERRO:") == false)
                 {
                     lblEscolherIlha.Text = valores;
+                    btnEscolherIlha_Click(sender, e);
                     escolheIlha = true;
                 }
                 else
@@ -121,7 +145,6 @@ namespace BodeOfWar
 
                 string mesaIlha = Jogo.VerificarMesa(idPartida, idRodada);
                 ToolBox.Erro(mesaIlha);
-                this.idRodada += 1; //atualiza a rodada para o proximo uso
                 mesaIlha = mesaIlha.Replace('\r', ' ');
                 mesaIlha = mesaIlha.Trim();
                 string[] mesa = mesaIlha.Split('\n');
@@ -188,6 +211,11 @@ namespace BodeOfWar
                     UltimoCartaMesa = cartasMesa;
                 }
 
+                if (lblJogadorVez.Text.Equals(this.idJogador.ToString()) && estadoJogo.Contains('B'))
+                {
+                    jogarCarta(cartasMesa);
+                }
+
                 #region
                 int cartasJogadas = 0;//cartas na mesa
                 foreach (string cartaJogada in cartasMesa)
@@ -209,6 +237,7 @@ namespace BodeOfWar
                     if (checarQtdBode)
                     {
                         QtdBode(qtdBode);
+                        this.idRodada += 1; //atualiza a rodada para o proximo uso
                     }
                     this.checarQtdBode = false;
 
@@ -222,18 +251,6 @@ namespace BodeOfWar
             if (false == jogando)
             {
                 return;
-            }
-            foreach (string partida in partidas)
-            {
-                string[] item = partida.Split(',');
-                if (idPartida == Int32.Parse(item[0]))
-                {
-                    string historico = Jogo.ExibirNarracao(idPartida).Replace('\r', ' ').Trim();
-                    string[] fimJogo = historico.Split('\n');
-                    MessageBox.Show("Partida Finalizada \n" + fimJogo[0] + '\n' + fimJogo[1]);
-                    jogando = false;
-                    break;
-                }
             }
             TimerChecarVez.Enabled = true;
         }
