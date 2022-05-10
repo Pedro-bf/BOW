@@ -41,9 +41,6 @@ namespace BodeOfWar
             this.lblQtdBodes = new System.Windows.Forms.Label();
             this.lblBodes = new System.Windows.Forms.Label();
             this.pnlMesa = new System.Windows.Forms.Panel();
-            this.btnJogarCarta = new System.Windows.Forms.Button();
-            this.btnTeste = new System.Windows.Forms.Button();
-            this.btnEscolherIlha = new System.Windows.Forms.Button();
             this.panel2 = new System.Windows.Forms.Panel();
             this.lblEscolha = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
@@ -93,19 +90,7 @@ namespace BodeOfWar
             this.lblVerificarVez.Name = "lblVerificarVez";
             this.lblVerificarVez.Size = new System.Drawing.Size(125, 26);
             this.lblVerificarVez.TabIndex = 22;
-            this.lblVerificarVez.Text = "Vez:";
-            // 
-            // btnIniciar
-            // 
-            this.btnIniciar.Location = new System.Drawing.Point(48, 418);
-            this.btnIniciar.Name = "btnIniciar";
-            this.btnIniciar.Size = new System.Drawing.Size(101, 23);
-            this.btnIniciar.TabIndex = 21;
-            this.btnIniciar.Text = "Iniciar Partida";
-            this.btnIniciar.UseVisualStyleBackColor = true;
-            this.btnIniciar.Click += new System.EventHandler(this.btnIniciar_Click);
             this.lblVerificarVez.Text = "Turno de:";
-
             // 
             // txtHistorico
             // 
@@ -139,7 +124,6 @@ namespace BodeOfWar
             // 
             // btnConfirmar
             // 
-            this.btnConfirmar.Location = new System.Drawing.Point(62, 365);
             this.btnConfirmar.FlatAppearance.BorderSize = 0;
             this.btnConfirmar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnConfirmar.Font = new System.Drawing.Font("Nirmala UI", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -153,27 +137,12 @@ namespace BodeOfWar
             // 
             // txtEscolha
             // 
-            this.txtEscolha.Location = new System.Drawing.Point(72, 339);
             this.txtEscolha.BackColor = System.Drawing.Color.SeaShell;
             this.txtEscolha.Location = new System.Drawing.Point(5, 656);
             this.txtEscolha.Name = "txtEscolha";
             this.txtEscolha.Size = new System.Drawing.Size(100, 20);
             this.txtEscolha.TabIndex = 32;
             // 
-            // lblEscolha
-            // 
-            this.lblEscolha.AutoSize = true;
-            this.lblEscolha.Location = new System.Drawing.Point(15, 339);
-            this.lblEscolha.Name = "lblEscolha";
-            this.lblEscolha.Size = new System.Drawing.Size(45, 13);
-            this.lblEscolha.TabIndex = 33;
-            this.lblEscolha.Text = "Escolha";
-            // 
-            // lblEscolherIlha
-            // 
-            this.lblEscolherIlha.AutoSize = true;
-            this.lblEscolherIlha.Location = new System.Drawing.Point(69, 305);
-            //
             // lblEscolherIlha
             // 
             this.lblEscolherIlha.AutoSize = true;
@@ -188,23 +157,37 @@ namespace BodeOfWar
             // lblValorIlha
             // 
             this.lblValorIlha.AutoSize = true;
-            this.lblValorIlha.Font = new System.Drawing.Font("Midnight", 20.25F);
+            this.lblValorIlha.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F);
             this.lblValorIlha.Location = new System.Drawing.Point(132, 111);
             this.lblValorIlha.Name = "lblValorIlha";
-            this.lblValorIlha.Size = new System.Drawing.Size(28, 33);
+            this.lblValorIlha.Size = new System.Drawing.Size(29, 31);
             this.lblValorIlha.TabIndex = 36;
             this.lblValorIlha.Text = "0";
             // 
             // lblQtdBodes
             // 
             this.lblQtdBodes.AutoSize = true;
-            this.lblQtdBodes.Font = new System.Drawing.Font("Midnight", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblQtdBodes.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblQtdBodes.ImageAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.lblQtdBodes.Location = new System.Drawing.Point(44, 111);
             this.lblQtdBodes.Name = "lblQtdBodes";
-            this.lblQtdBodes.Size = new System.Drawing.Size(28, 33);
+            this.lblQtdBodes.Size = new System.Drawing.Size(29, 31);
             this.lblQtdBodes.TabIndex = 38;
             this.lblQtdBodes.Text = "0";
+            // 
+            // lblBodes
+            // 
+            this.lblBodes.Location = new System.Drawing.Point(0, 0);
+            this.lblBodes.Name = "lblBodes";
+            this.lblBodes.Size = new System.Drawing.Size(100, 23);
+            this.lblBodes.TabIndex = 42;
+            // 
+            // pnlMesa
+            // 
+            this.pnlMesa.Location = new System.Drawing.Point(373, 81);
+            this.pnlMesa.Name = "pnlMesa";
+            this.pnlMesa.Size = new System.Drawing.Size(639, 436);
+            this.pnlMesa.TabIndex = 31;
             // 
             // panel2
             // 
@@ -228,10 +211,6 @@ namespace BodeOfWar
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.Tan;
-            this.panel1.Controls.Add(this.lblEscolha);
-            this.panel1.Controls.Add(this.lblEscolherIlha);
-            this.panel1.Controls.Add(this.btnConfirmar);
-            this.panel1.Controls.Add(this.txtEscolha);
             this.panel1.Controls.Add(this.pnlNav);
             this.panel1.Controls.Add(this.panel2);
             this.panel1.Controls.Add(this.panel8);
@@ -244,7 +223,7 @@ namespace BodeOfWar
             this.panel1.Dock = System.Windows.Forms.DockStyle.Left;
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(200, 800);
+            this.panel1.Size = new System.Drawing.Size(200, 788);
             this.panel1.TabIndex = 42;
             // 
             // pnlNav
@@ -267,11 +246,11 @@ namespace BodeOfWar
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Font = new System.Drawing.Font("Midnight", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label6.ImageAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.label6.Location = new System.Drawing.Point(87, 37);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(28, 33);
+            this.label6.Size = new System.Drawing.Size(29, 31);
             this.label6.TabIndex = 42;
             this.label6.Text = "0";
             // 
@@ -298,11 +277,11 @@ namespace BodeOfWar
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Midnight", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label3.ImageAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.label3.Location = new System.Drawing.Point(86, 36);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(28, 33);
+            this.label3.Size = new System.Drawing.Size(29, 31);
             this.label3.TabIndex = 42;
             this.label3.Text = "0";
             // 
@@ -329,11 +308,11 @@ namespace BodeOfWar
             // label9
             // 
             this.label9.AutoSize = true;
-            this.label9.Font = new System.Drawing.Font("Midnight", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label9.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label9.ImageAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.label9.Location = new System.Drawing.Point(87, 35);
             this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(28, 33);
+            this.label9.Size = new System.Drawing.Size(29, 31);
             this.label9.TabIndex = 42;
             this.label9.Text = "0";
             // 
@@ -375,11 +354,11 @@ namespace BodeOfWar
             // lblBodeJ22
             // 
             this.lblBodeJ22.AutoSize = true;
-            this.lblBodeJ22.Font = new System.Drawing.Font("Midnight", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblBodeJ22.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblBodeJ22.ImageAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.lblBodeJ22.Location = new System.Drawing.Point(86, 37);
             this.lblBodeJ22.Name = "lblBodeJ22";
-            this.lblBodeJ22.Size = new System.Drawing.Size(28, 33);
+            this.lblBodeJ22.Size = new System.Drawing.Size(29, 31);
             this.lblBodeJ22.TabIndex = 42;
             this.lblBodeJ22.Text = "0";
             // 
@@ -414,8 +393,6 @@ namespace BodeOfWar
             this.panel3.Controls.Add(this.lblVocê);
             this.panel3.Controls.Add(this.pictureBox3);
             this.panel3.Controls.Add(this.pictureBox2);
-            this.panel3.Controls.Add(this.lblValorIlha);
-            this.panel3.Controls.Add(this.lblQtdBodes);
             this.panel3.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel3.Location = new System.Drawing.Point(0, 0);
             this.panel3.Name = "panel3";
@@ -456,52 +433,13 @@ namespace BodeOfWar
             this.pictureBox2.TabIndex = 41;
             this.pictureBox2.TabStop = false;
             // 
-            // pnlMesa
-            // 
-            this.pnlMesa.Location = new System.Drawing.Point(373, 81);
-            this.pnlMesa.Name = "pnlMesa";
-            this.pnlMesa.Size = new System.Drawing.Size(639, 436);
-            this.pnlMesa.TabIndex = 31;
-            // 
-            // btnJogarCarta
-            // 
-            this.btnJogarCarta.Location = new System.Drawing.Point(304, 522);
-            this.btnJogarCarta.Name = "btnJogarCarta";
-            this.btnJogarCarta.Size = new System.Drawing.Size(75, 23);
-            this.btnJogarCarta.TabIndex = 39;
-            this.btnJogarCarta.Text = "Jogar";
-            this.btnJogarCarta.UseVisualStyleBackColor = true;
-            this.btnJogarCarta.Click += new System.EventHandler(this.btnJogarCarta_Click);
-            // 
-            // btnTeste
-            // 
-            this.btnTeste.Location = new System.Drawing.Point(27, 251);
-            this.btnTeste.Name = "btnTeste";
-            this.btnTeste.Size = new System.Drawing.Size(53, 26);
-            this.btnTeste.TabIndex = 40;
-            this.btnTeste.Text = "Teste";
-            this.btnTeste.UseVisualStyleBackColor = true;
-            this.btnTeste.Click += new System.EventHandler(this.btnTeste_Click);
-            // 
-            // btnEscolherIlha
-            // 
-            this.btnEscolherIlha.Location = new System.Drawing.Point(143, 365);
-            this.btnEscolherIlha.Name = "btnEscolherIlha";
-            this.btnEscolherIlha.Size = new System.Drawing.Size(75, 23);
-            this.btnEscolherIlha.TabIndex = 41;
-            this.btnEscolherIlha.Text = "Escolher Ilha";
-            this.btnEscolherIlha.UseVisualStyleBackColor = true;
-            this.btnEscolherIlha.Click += new System.EventHandler(this.btnEscolherIlha_Click);
-            // 
             // Bode
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoScroll = true;
-            this.ClientSize = new System.Drawing.Size(1289, 749);
-            this.Controls.Add(this.btnEscolherIlha);
-            this.Controls.Add(this.btnTeste);
-            this.Controls.Add(this.btnJogarCarta);
+            this.BackColor = System.Drawing.Color.BurlyWood;
+            this.ClientSize = new System.Drawing.Size(1305, 788);
             this.Controls.Add(this.pnlMesa);
             this.Controls.Add(this.lblQtdBodes);
             this.Controls.Add(this.lblBodes);
@@ -510,8 +448,6 @@ namespace BodeOfWar
             this.Controls.Add(this.lblEscolha);
             this.Controls.Add(this.txtEscolha);
             this.Controls.Add(this.btnConfirmar);
-            this.BackColor = System.Drawing.Color.BurlyWood;
-            this.ClientSize = new System.Drawing.Size(1305, 800);
             this.Controls.Add(this.pnlMao);
             this.Controls.Add(this.lblHistorico);
             this.Controls.Add(this.txtHistorico);
@@ -527,7 +463,6 @@ namespace BodeOfWar
             this.Text = "TelaDoJogo";
             this.Load += new System.EventHandler(this.Bode_Load);
             this.panel1.ResumeLayout(false);
-            this.panel1.PerformLayout();
             this.panel8.ResumeLayout(false);
             this.panel8.PerformLayout();
             this.panel6.ResumeLayout(false);
@@ -561,9 +496,6 @@ namespace BodeOfWar
         private System.Windows.Forms.Label lblQtdBodes;
         private System.Windows.Forms.Label lblBodes;
         private System.Windows.Forms.Panel pnlMesa;
-        private System.Windows.Forms.Button btnJogarCarta;
-        private System.Windows.Forms.Button btnTeste;
-        private System.Windows.Forms.Button btnEscolherIlha;
         private System.Windows.Forms.PictureBox pictureBox2;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Label lblEscolha;

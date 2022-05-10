@@ -32,11 +32,7 @@ namespace BodeOfWar
         int nHeightEllipse
     );
 
-
-
-
         private Timer TimerChecarVez;
-
         private string estadoJogo;
 
         private int valorBode;
@@ -53,9 +49,6 @@ namespace BodeOfWar
         private bool escolheIlha = false;
 
         private string[] UltimoCartaMesa;
-
-
-
 
         public void InitTimer()
         {
@@ -184,7 +177,7 @@ namespace BodeOfWar
                     if (carta.Contains('I'))
                     {
                         string tamanhoIlha = carta;
-                        lblValorIlha.Text = mesaIlha.Replace(tamanhoIlha[0], ' ');//tira o l inicial
+                        lblValorIlha.Text = carta.Replace(carta[0], ' ');//tira o l inicial
                         
                     }
                     else if (carta.Equals("") == false)
@@ -332,7 +325,6 @@ namespace BodeOfWar
         private void btnConfirmar_Click(object sender, EventArgs e)
 
         {
-
             //Design
             pnlNav.Height = btnIniciar.Height;
             pnlNav.Top = btnIniciar.Top;
@@ -410,7 +402,9 @@ namespace BodeOfWar
             {
                 Jogo.DefinirIlha(idJogador, senha, Int32.Parse(valorIlha));
                 string mesaIlha = Jogo.VerificarMesa(idPartida);
-                lblValorIlha.Text = mesaIlha.Replace(mesaIlha[0], ' ');//tira o l inicial
+                string[] temp = mesaIlha.Split('\n');
+                string ilha = temp[0];
+                lblValorIlha.Text = mesaIlha.Replace(ilha[0], ' ');//tira o l inicial
                 lblEscolherIlha.Text = " ";
 
                 return;
