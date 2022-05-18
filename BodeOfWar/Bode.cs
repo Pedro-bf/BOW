@@ -54,7 +54,7 @@ namespace BodeOfWar
         {
             TimerChecarVez = new Timer();
             TimerChecarVez.Tick += new EventHandler(update);
-            TimerChecarVez.Interval = 2500; //1s 
+            TimerChecarVez.Interval = 2500; //2.5s 
             TimerChecarVez.Start();
         }
 
@@ -109,7 +109,7 @@ namespace BodeOfWar
             //checa se a partida termino
             if (partida[3].Contains('E'))
             {
-                string temp = Jogo.ListarJogadores(this.idRodada);
+                string temp = Jogo.ListarJogadores(this.idPartida);
                 temp = temp.Replace('\n', ' ');
                 temp = temp.Replace('\r', ' ');
                 temp = temp.Trim();

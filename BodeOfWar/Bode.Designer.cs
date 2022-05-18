@@ -45,9 +45,6 @@ namespace BodeOfWar
             this.lblEscolha = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
             this.pnlNav = new System.Windows.Forms.Panel();
-            this.panel8 = new System.Windows.Forms.Panel();
-            this.label6 = new System.Windows.Forms.Label();
-            this.lblBodesJogador5 = new System.Windows.Forms.Label();
             this.panel6 = new System.Windows.Forms.Panel();
             this.label3 = new System.Windows.Forms.Label();
             this.lblBodesJogador3 = new System.Windows.Forms.Label();
@@ -64,7 +61,6 @@ namespace BodeOfWar
             this.pictureBox3 = new System.Windows.Forms.PictureBox();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.panel1.SuspendLayout();
-            this.panel8.SuspendLayout();
             this.panel6.SuspendLayout();
             this.panel10.SuspendLayout();
             this.panel4.SuspendLayout();
@@ -213,7 +209,6 @@ namespace BodeOfWar
             this.panel1.BackColor = System.Drawing.Color.Tan;
             this.panel1.Controls.Add(this.pnlNav);
             this.panel1.Controls.Add(this.panel2);
-            this.panel1.Controls.Add(this.panel8);
             this.panel1.Controls.Add(this.panel6);
             this.panel1.Controls.Add(this.panel10);
             this.panel1.Controls.Add(this.btnImg);
@@ -234,42 +229,11 @@ namespace BodeOfWar
             this.pnlNav.Size = new System.Drawing.Size(3, 100);
             this.pnlNav.TabIndex = 43;
             // 
-            // panel8
-            // 
-            this.panel8.Controls.Add(this.label6);
-            this.panel8.Controls.Add(this.lblBodesJogador5);
-            this.panel8.Location = new System.Drawing.Point(-1, 495);
-            this.panel8.Name = "panel8";
-            this.panel8.Size = new System.Drawing.Size(200, 80);
-            this.panel8.TabIndex = 47;
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.ImageAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.label6.Location = new System.Drawing.Point(87, 37);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(29, 31);
-            this.label6.TabIndex = 42;
-            this.label6.Text = "0";
-            // 
-            // lblBodesJogador5
-            // 
-            this.lblBodesJogador5.AutoSize = true;
-            this.lblBodesJogador5.Font = new System.Drawing.Font("MS Reference Sans Serif", 12F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblBodesJogador5.ForeColor = System.Drawing.Color.Cornsilk;
-            this.lblBodesJogador5.Location = new System.Drawing.Point(47, 4);
-            this.lblBodesJogador5.Name = "lblBodesJogador5";
-            this.lblBodesJogador5.Size = new System.Drawing.Size(97, 20);
-            this.lblBodesJogador5.TabIndex = 43;
-            this.lblBodesJogador5.Text = "Jogador 5";
-            // 
             // panel6
             // 
             this.panel6.Controls.Add(this.label3);
             this.panel6.Controls.Add(this.lblBodesJogador3);
-            this.panel6.Location = new System.Drawing.Point(0, 301);
+            this.panel6.Location = new System.Drawing.Point(0, 304);
             this.panel6.Name = "panel6";
             this.panel6.Size = new System.Drawing.Size(200, 80);
             this.panel6.TabIndex = 45;
@@ -300,7 +264,7 @@ namespace BodeOfWar
             // 
             this.panel10.Controls.Add(this.label9);
             this.panel10.Controls.Add(this.lblBodesJogador4);
-            this.panel10.Location = new System.Drawing.Point(-1, 412);
+            this.panel10.Location = new System.Drawing.Point(1, 390);
             this.panel10.Name = "panel10";
             this.panel10.Size = new System.Drawing.Size(200, 80);
             this.panel10.TabIndex = 46;
@@ -463,8 +427,6 @@ namespace BodeOfWar
             this.Text = "TelaDoJogo";
             this.Load += new System.EventHandler(this.Bode_Load);
             this.panel1.ResumeLayout(false);
-            this.panel8.ResumeLayout(false);
-            this.panel8.PerformLayout();
             this.panel6.ResumeLayout(false);
             this.panel6.PerformLayout();
             this.panel10.ResumeLayout(false);
@@ -509,9 +471,6 @@ namespace BodeOfWar
         private System.Windows.Forms.Panel panel6;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label lblBodesJogador3;
-        private System.Windows.Forms.Panel panel8;
-        private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.Label lblBodesJogador5;
         private System.Windows.Forms.Panel panel10;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.Label lblBodesJogador4;
