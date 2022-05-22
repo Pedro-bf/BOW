@@ -576,52 +576,30 @@ namespace BodeOfWar
         private void btnEscolherIlha_Click(object sender, EventArgs e)
         {
             string valores = Jogo.VerificarIlha(idJogador, senha);
+
             if (escolheIlha == true)
             {
+                int qtdAtualBode = Int32.Parse(lblQtdBodes.Text);
+                int tamanhoAtual = Int32.Parse(lblValorIlha.Text);
                 string[] valorIlha = valores.Split(',');
+
                 if (ToolBox.Erro(valores) == false)
                 {
-                    if (Int32.Parse(valorIlha[0]) > Int32.Parse(valorIlha[1]))
+                    if(Int32.Parse(valorIlha[0]) + tamanhoAtual > qtdAtualBode)
                     {
-                        EscolhaIlha(valorIlha[1]);
+                        EscolhaIlha(valorIlha[0]);
                     }
                     else
                     {
-                        EscolhaIlha(valorIlha[0]);
+                        EscolhaIlha(valorIlha[1]);
                     }
                 }
             }
         }
-            /*
-        private void pictureBox1_Click(object sender, EventArgs e)
+
+        private void Bode_FormClosing(object sender, FormClosingEventArgs e)
         {
-
+            this.TimerChecarVez.Enabled = false;
         }
-
-        private void lblQtdBodes_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void lblVerificarVez_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void panel4_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
-
-        private void lblBodesJogador5_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void panel3_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
-            */
     }
 }

@@ -72,7 +72,7 @@ namespace BodeOfWar
             // lblJogadorVez
             // 
             this.lblJogadorVez.AutoSize = true;
-            this.lblJogadorVez.Location = new System.Drawing.Point(45, 9);
+            this.lblJogadorVez.Location = new System.Drawing.Point(659, 20);
             this.lblJogadorVez.Name = "lblJogadorVez";
             this.lblJogadorVez.Size = new System.Drawing.Size(0, 13);
             this.lblJogadorVez.TabIndex = 23;
@@ -173,7 +173,7 @@ namespace BodeOfWar
             // 
             // lblBodes
             // 
-            this.lblBodes.Location = new System.Drawing.Point(0, 0);
+            this.lblBodes.Location = new System.Drawing.Point(665, 14);
             this.lblBodes.Name = "lblBodes";
             this.lblBodes.Size = new System.Drawing.Size(100, 23);
             this.lblBodes.TabIndex = 42;
@@ -218,7 +218,7 @@ namespace BodeOfWar
             this.panel1.Dock = System.Windows.Forms.DockStyle.Left;
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(200, 788);
+            this.panel1.Size = new System.Drawing.Size(200, 749);
             this.panel1.TabIndex = 42;
             // 
             // pnlNav
@@ -403,7 +403,7 @@ namespace BodeOfWar
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoScroll = true;
             this.BackColor = System.Drawing.Color.BurlyWood;
-            this.ClientSize = new System.Drawing.Size(1305, 788);
+            this.ClientSize = new System.Drawing.Size(1305, 749);
             this.Controls.Add(this.pnlMesa);
             this.Controls.Add(this.lblQtdBodes);
             this.Controls.Add(this.lblBodes);
@@ -418,13 +418,14 @@ namespace BodeOfWar
             this.Controls.Add(this.lblJogadorVez);
             this.Controls.Add(this.lblVerificarVez);
             this.Controls.Add(this.panel1);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.MaximizeBox = false;
             this.MaximumSize = new System.Drawing.Size(1920, 1080);
             this.MinimumSize = new System.Drawing.Size(1305, 718);
             this.Name = "Bode";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "TelaDoJogo";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Bode_FormClosing);
             this.Load += new System.EventHandler(this.Bode_Load);
             this.panel1.ResumeLayout(false);
             this.panel6.ResumeLayout(false);
