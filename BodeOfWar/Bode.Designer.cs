@@ -29,6 +29,7 @@ namespace BodeOfWar
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.lblJogadorVez = new System.Windows.Forms.Label();
             this.lblVerificarVez = new System.Windows.Forms.Label();
             this.txtHistorico = new System.Windows.Forms.TextBox();
@@ -60,6 +61,7 @@ namespace BodeOfWar
             this.lblVocê = new System.Windows.Forms.Label();
             this.pictureBox3 = new System.Windows.Forms.PictureBox();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
+            this.tmrHistorico = new System.Windows.Forms.Timer(this.components);
             this.panel1.SuspendLayout();
             this.panel6.SuspendLayout();
             this.panel10.SuspendLayout();
@@ -397,6 +399,11 @@ namespace BodeOfWar
             this.pictureBox2.TabIndex = 41;
             this.pictureBox2.TabStop = false;
             // 
+            // tmrHistorico
+            // 
+            this.tmrHistorico.Interval = 2000;
+            this.tmrHistorico.Tick += new System.EventHandler(this.tmrHistorico_Tick);
+            // 
             // Bode
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -476,5 +483,6 @@ namespace BodeOfWar
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.Label lblBodesJogador4;
         private System.Windows.Forms.Panel pnlNav;
+        private System.Windows.Forms.Timer tmrHistorico;
     }
 }

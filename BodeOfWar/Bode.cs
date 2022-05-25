@@ -77,6 +77,7 @@ namespace BodeOfWar
         private void Bode_Load(object sender, EventArgs e)
         {
             InitTimer();
+            tmrHistorico.Start();
             txtHistorico.Text = Jogo.ExibirNarracao(this.idPartida);
         }
 
@@ -101,10 +102,11 @@ namespace BodeOfWar
             string[] jogadores = Jogo.ListarJogadores(idPartida).Split('\r');
             this.qtdJogadores = jogadores.Length - 1;
 
-            TimerChecarVez.Enabled = false;
             string verificarVez = Jogo.VerificarVez(this.idPartida);
             if (ToolBox.ErroSemMensagem(verificarVez) == true) return; //checa se a partida não iniciou
             string[] partida = verificarVez.Split(',');
+
+            TimerChecarVez.Enabled = false;
 
             //checa se a partida termino
             if (partida[3].Contains("E") || partida[0].Contains("E"))
@@ -114,14 +116,16 @@ namespace BodeOfWar
                 temp = temp.Replace('\r', ' ');
                 temp = temp.Trim();
 
-                string[] listjogadores = temp.Split(',');
+                string[] listjogadores = temp.Split(' ');
                 //Partidade encerrada
                 for(int i = 0; i < listjogadores.Length; i += 2)
                 {
-                    if (listjogadores[i].Equals(partida[1]))
+                    if (listjogadores[i].Contains(partida[1]))
                     {
-                        MessageBox.Show($"Partida encerrada! \n Jogador {listjogadores[i+1]} venceu.");
+                        string[] vencedor = listjogadores[i].Split(',');
+                        MessageBox.Show($"Partida encerrada! \n Jogador {vencedor[1]} venceu.");
                         i = listjogadores.Length;
+                        tmrHistorico.Enabled = false;
                     }
                 }
                 return;
@@ -133,8 +137,6 @@ namespace BodeOfWar
             {
                 idJogadorVez = Int32.Parse(partida[1]);
             }
-            
-            txtHistorico.Text = Jogo.ExibirNarracao(this.idPartida);
 
             if (partida[0].Contains('J'))
             {
@@ -618,6 +620,12 @@ namespace BodeOfWar
         private void Bode_FormClosing(object sender, FormClosingEventArgs e)
         {
             this.TimerChecarVez.Enabled = false;
+        }
+
+        private void tmrHistorico_Tick(object sender, EventArgs e)
+        {
+            //atualiza o historico
+            txtHistorico.Text = Jogo.ExibirNarracao(this.idPartida);
         }
     }
 }
