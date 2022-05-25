@@ -82,7 +82,7 @@ namespace BodeOfWar
             this.lblVerificarVez.AutoSize = true;
             this.lblVerificarVez.BackColor = System.Drawing.Color.Transparent;
             this.lblVerificarVez.Font = new System.Drawing.Font("MS Reference Sans Serif", 15.75F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblVerificarVez.Location = new System.Drawing.Point(534, 11);
+            this.lblVerificarVez.Location = new System.Drawing.Point(528, 11);
             this.lblVerificarVez.Name = "lblVerificarVez";
             this.lblVerificarVez.Size = new System.Drawing.Size(125, 26);
             this.lblVerificarVez.TabIndex = 22;
@@ -173,7 +173,7 @@ namespace BodeOfWar
             // 
             // lblBodes
             // 
-            this.lblBodes.Location = new System.Drawing.Point(665, 14);
+            this.lblBodes.Location = new System.Drawing.Point(696, 14);
             this.lblBodes.Name = "lblBodes";
             this.lblBodes.Size = new System.Drawing.Size(100, 23);
             this.lblBodes.TabIndex = 42;

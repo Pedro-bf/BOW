@@ -105,9 +105,9 @@ namespace BodeOfWar
             string verificarVez = Jogo.VerificarVez(this.idPartida);
             if (ToolBox.ErroSemMensagem(verificarVez) == true) return; //checa se a partida não iniciou
             string[] partida = verificarVez.Split(',');
-            
+
             //checa se a partida termino
-            if (partida[3].Contains('E'))
+            if (partida[3].Contains("E") || partida[0].Contains("E"))
             {
                 string temp = Jogo.ListarJogadores(this.idPartida);
                 temp = temp.Replace('\n', ' ');
@@ -585,13 +585,31 @@ namespace BodeOfWar
 
                 if (ToolBox.Erro(valores) == false)
                 {
-                    if(Int32.Parse(valorIlha[0]) + tamanhoAtual > qtdAtualBode)
+                    int valorIlha1, valorIlha2;
+                    int maiorValor, menorValor;
+
+                    valorIlha1 = Int32.Parse(valorIlha[0]);
+                    valorIlha2 = Int32.Parse(valorIlha[1]);
+
+                    //Vem qual o menor e maior valores de ilha
+                    if(valorIlha1 > valorIlha2)
                     {
-                        EscolhaIlha(valorIlha[0]);
+                        maiorValor = valorIlha1;
+                        menorValor = valorIlha2;
                     }
                     else
                     {
-                        EscolhaIlha(valorIlha[1]);
+                        maiorValor = valorIlha2;
+                        menorValor = valorIlha1;
+                    }
+                    //escolhe o menor valor se a soma dele com o tamanho atual for maior ou igual a quantidade atual de bodes
+                    if (menorValor + tamanhoAtual >= qtdAtualBode)
+                    {
+                        EscolhaIlha(menorValor.ToString());
+                    }
+                    else //escolhe o maior
+                    {
+                        EscolhaIlha(maiorValor.ToString());
                     }
                 }
             }
