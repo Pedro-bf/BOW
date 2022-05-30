@@ -77,7 +77,7 @@ namespace BodeOfWar
         private void Bode_Load(object sender, EventArgs e)
         {
             InitTimer();
-            tmrHistorico.Start();
+            tmrHistorico.Enabled = true;
             txtHistorico.Text = Jogo.ExibirNarracao(this.idPartida);
         }
 
@@ -102,11 +102,10 @@ namespace BodeOfWar
             string[] jogadores = Jogo.ListarJogadores(idPartida).Split('\r');
             this.qtdJogadores = jogadores.Length - 1;
 
+            TimerChecarVez.Enabled = false;
             string verificarVez = Jogo.VerificarVez(this.idPartida);
             if (ToolBox.ErroSemMensagem(verificarVez) == true) return; //checa se a partida não iniciou
             string[] partida = verificarVez.Split(',');
-
-            TimerChecarVez.Enabled = false;
 
             //checa se a partida termino
             if (partida[3].Contains("E") || partida[0].Contains("E"))
@@ -116,16 +115,15 @@ namespace BodeOfWar
                 temp = temp.Replace('\r', ' ');
                 temp = temp.Trim();
 
-                string[] listjogadores = temp.Split(' ');
+                string[] listjogadores = temp.Split(',');
                 //Partidade encerrada
                 for(int i = 0; i < listjogadores.Length; i += 2)
                 {
-                    if (listjogadores[i].Contains(partida[1]))
+                    if (listjogadores[i].Equals(partida[1]))
                     {
-                        string[] vencedor = listjogadores[i].Split(',');
-                        MessageBox.Show($"Partida encerrada! \n Jogador {vencedor[1]} venceu.");
-                        i = listjogadores.Length;
+                        MessageBox.Show($"Partida encerrada! \n Jogador {listjogadores[i+1]} venceu.");
                         tmrHistorico.Enabled = false;
+                        i = listjogadores.Length;
                     }
                 }
                 return;
@@ -137,6 +135,8 @@ namespace BodeOfWar
             {
                 idJogadorVez = Int32.Parse(partida[1]);
             }
+            
+            txtHistorico.Text = Jogo.ExibirNarracao(this.idPartida);
 
             if (partida[0].Contains('J'))
             {
@@ -238,7 +238,6 @@ namespace BodeOfWar
                     jogarCarta(cartasMesa);
                 }
 
-                #region
                 int cartasJogadas = 0;//cartas na mesa
                 foreach (string cartaJogada in cartasMesa)
                 {
@@ -251,7 +250,6 @@ namespace BodeOfWar
                         break;
                     }
                 }
-                #endregion
 
                 if ((qtdJogadores == cartasJogadas && estadoJogo.Contains('B')) ||
                      estadoJogo.Contains('I') || estadoJogo.Contains('F') || estadoJogo.Contains('E')) 
@@ -512,9 +510,12 @@ namespace BodeOfWar
 
         private void jogarCarta(string[] cartasMesa)
         {
+            //Ta entrando aqui quando n deve TODO
             int menorCartaMesa = 51;
             foreach(string carta in cartasMesa)//achar a menor carta da mesa
             {
+                if(carta == null) break;
+
                 if(carta != null)
                 {
                     string[] elemento = carta.Split(',');
@@ -527,7 +528,7 @@ namespace BodeOfWar
             }
             if (menorCartaMesa == 51)//jogar a menor carta se a mesa estiver vazia
             {
-                Jogo.Jogar(idJogador, senha, Int32.Parse(cartasMao[0]));
+                string retorno = Jogo.Jogar(idJogador, senha, Int32.Parse(cartasMao[0]));
                 this.valorBode = Int32.Parse(cartasMao[0]);
                 return;
             }
@@ -550,7 +551,7 @@ namespace BodeOfWar
             if (menorValoresMao.Count > 0)
             {
                 int cartaJogar = menorValoresMao.Last<int>();
-                Jogo.Jogar(idJogador,senha,cartaJogar);
+                string retorno = Jogo.Jogar(idJogador,senha,cartaJogar);
                 this.valorBode = cartaJogar;
                 return;
             }
@@ -624,7 +625,6 @@ namespace BodeOfWar
 
         private void tmrHistorico_Tick(object sender, EventArgs e)
         {
-            //atualiza o historico
             txtHistorico.Text = Jogo.ExibirNarracao(this.idPartida);
         }
     }

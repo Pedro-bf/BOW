@@ -29,7 +29,7 @@ namespace BodeOfWar
             else
             {
                 retorno = retorno.Replace("\r", "");
-                retorno = retorno.Substring(0, retorno.Length - 1);
+                if(retorno.Length > 0) retorno = retorno.Substring(0, retorno.Length - 1);
                 string[] partidas = retorno.Split('\n');
 
                 for (int i = 0; i < partidas.Length; i++)
