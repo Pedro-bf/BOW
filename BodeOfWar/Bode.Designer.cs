@@ -29,7 +29,6 @@ namespace BodeOfWar
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
             this.lblJogadorVez = new System.Windows.Forms.Label();
             this.lblVerificarVez = new System.Windows.Forms.Label();
             this.txtHistorico = new System.Windows.Forms.TextBox();
@@ -61,7 +60,6 @@ namespace BodeOfWar
             this.lblVocê = new System.Windows.Forms.Label();
             this.pictureBox3 = new System.Windows.Forms.PictureBox();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
-            this.tmrHistorico = new System.Windows.Forms.Timer(this.components);
             this.panel1.SuspendLayout();
             this.panel6.SuspendLayout();
             this.panel10.SuspendLayout();
@@ -74,17 +72,18 @@ namespace BodeOfWar
             // lblJogadorVez
             // 
             this.lblJogadorVez.AutoSize = true;
-            this.lblJogadorVez.Location = new System.Drawing.Point(659, 20);
+            this.lblJogadorVez.Location = new System.Drawing.Point(696, 18);
+            this.lblJogadorVez.MaximumSize = new System.Drawing.Size(0, 26);
             this.lblJogadorVez.Name = "lblJogadorVez";
             this.lblJogadorVez.Size = new System.Drawing.Size(0, 13);
-            this.lblJogadorVez.TabIndex = 23;
+            this.lblJogadorVez.TabIndex = 26;
             // 
             // lblVerificarVez
             // 
             this.lblVerificarVez.AutoSize = true;
             this.lblVerificarVez.BackColor = System.Drawing.Color.Transparent;
             this.lblVerificarVez.Font = new System.Drawing.Font("MS Reference Sans Serif", 15.75F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblVerificarVez.Location = new System.Drawing.Point(528, 11);
+            this.lblVerificarVez.Location = new System.Drawing.Point(565, 9);
             this.lblVerificarVez.Name = "lblVerificarVez";
             this.lblVerificarVez.Size = new System.Drawing.Size(125, 26);
             this.lblVerificarVez.TabIndex = 22;
@@ -125,7 +124,7 @@ namespace BodeOfWar
             this.btnConfirmar.FlatAppearance.BorderSize = 0;
             this.btnConfirmar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnConfirmar.Font = new System.Drawing.Font("Nirmala UI", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnConfirmar.Location = new System.Drawing.Point(113, 655);
+            this.btnConfirmar.Location = new System.Drawing.Point(118, 551);
             this.btnConfirmar.Name = "btnConfirmar";
             this.btnConfirmar.Size = new System.Drawing.Size(75, 23);
             this.btnConfirmar.TabIndex = 31;
@@ -136,7 +135,7 @@ namespace BodeOfWar
             // txtEscolha
             // 
             this.txtEscolha.BackColor = System.Drawing.Color.SeaShell;
-            this.txtEscolha.Location = new System.Drawing.Point(5, 656);
+            this.txtEscolha.Location = new System.Drawing.Point(10, 552);
             this.txtEscolha.Name = "txtEscolha";
             this.txtEscolha.Size = new System.Drawing.Size(100, 20);
             this.txtEscolha.TabIndex = 32;
@@ -182,7 +181,7 @@ namespace BodeOfWar
             // 
             // pnlMesa
             // 
-            this.pnlMesa.Location = new System.Drawing.Point(373, 81);
+            this.pnlMesa.Location = new System.Drawing.Point(363, 83);
             this.pnlMesa.Name = "pnlMesa";
             this.pnlMesa.Size = new System.Drawing.Size(639, 436);
             this.pnlMesa.TabIndex = 31;
@@ -200,7 +199,7 @@ namespace BodeOfWar
             // 
             this.lblEscolha.AutoSize = true;
             this.lblEscolha.Font = new System.Drawing.Font("Nirmala UI", 9.75F, System.Drawing.FontStyle.Bold);
-            this.lblEscolha.Location = new System.Drawing.Point(3, 636);
+            this.lblEscolha.Location = new System.Drawing.Point(8, 532);
             this.lblEscolha.Name = "lblEscolha";
             this.lblEscolha.Size = new System.Drawing.Size(54, 17);
             this.lblEscolha.TabIndex = 33;
@@ -214,13 +213,16 @@ namespace BodeOfWar
             this.panel1.Controls.Add(this.panel6);
             this.panel1.Controls.Add(this.panel10);
             this.panel1.Controls.Add(this.btnImg);
+            this.panel1.Controls.Add(this.lblEscolha);
             this.panel1.Controls.Add(this.panel4);
+            this.panel1.Controls.Add(this.txtEscolha);
             this.panel1.Controls.Add(this.btnIniciar);
+            this.panel1.Controls.Add(this.btnConfirmar);
             this.panel1.Controls.Add(this.panel3);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Left;
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(200, 749);
+            this.panel1.Size = new System.Drawing.Size(200, 758);
             this.panel1.TabIndex = 42;
             // 
             // pnlNav
@@ -299,7 +301,7 @@ namespace BodeOfWar
             this.btnImg.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnImg.Font = new System.Drawing.Font("Nirmala UI", 9.75F, System.Drawing.FontStyle.Bold);
             this.btnImg.Image = global::BodeOfWar.Properties.Resources.Cartas_png_16;
-            this.btnImg.Location = new System.Drawing.Point(12, 739);
+            this.btnImg.Location = new System.Drawing.Point(10, 636);
             this.btnImg.Name = "btnImg";
             this.btnImg.Size = new System.Drawing.Size(170, 32);
             this.btnImg.TabIndex = 29;
@@ -345,7 +347,7 @@ namespace BodeOfWar
             this.btnIniciar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnIniciar.Font = new System.Drawing.Font("Nirmala UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnIniciar.Image = global::BodeOfWar.Properties.Resources.Icon_Bandeira_png_16;
-            this.btnIniciar.Location = new System.Drawing.Point(12, 704);
+            this.btnIniciar.Location = new System.Drawing.Point(10, 601);
             this.btnIniciar.Name = "btnIniciar";
             this.btnIniciar.Size = new System.Drawing.Size(170, 29);
             this.btnIniciar.TabIndex = 21;
@@ -399,26 +401,18 @@ namespace BodeOfWar
             this.pictureBox2.TabIndex = 41;
             this.pictureBox2.TabStop = false;
             // 
-            // tmrHistorico
-            // 
-            this.tmrHistorico.Interval = 2000;
-            this.tmrHistorico.Tick += new System.EventHandler(this.tmrHistorico_Tick);
-            // 
             // Bode
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoScroll = true;
             this.BackColor = System.Drawing.Color.BurlyWood;
-            this.ClientSize = new System.Drawing.Size(1305, 749);
+            this.ClientSize = new System.Drawing.Size(1305, 758);
             this.Controls.Add(this.pnlMesa);
             this.Controls.Add(this.lblQtdBodes);
             this.Controls.Add(this.lblBodes);
             this.Controls.Add(this.lblValorIlha);
             this.Controls.Add(this.lblEscolherIlha);
-            this.Controls.Add(this.lblEscolha);
-            this.Controls.Add(this.txtEscolha);
-            this.Controls.Add(this.btnConfirmar);
             this.Controls.Add(this.pnlMao);
             this.Controls.Add(this.lblHistorico);
             this.Controls.Add(this.txtHistorico);
@@ -435,6 +429,7 @@ namespace BodeOfWar
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Bode_FormClosing);
             this.Load += new System.EventHandler(this.Bode_Load);
             this.panel1.ResumeLayout(false);
+            this.panel1.PerformLayout();
             this.panel6.ResumeLayout(false);
             this.panel6.PerformLayout();
             this.panel10.ResumeLayout(false);
@@ -483,6 +478,5 @@ namespace BodeOfWar
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.Label lblBodesJogador4;
         private System.Windows.Forms.Panel pnlNav;
-        private System.Windows.Forms.Timer tmrHistorico;
     }
 }
