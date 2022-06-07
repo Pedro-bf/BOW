@@ -45,25 +45,14 @@ namespace BodeOfWar
             this.lblEscolha = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
             this.pnlNav = new System.Windows.Forms.Panel();
-            this.panel6 = new System.Windows.Forms.Panel();
-            this.label3 = new System.Windows.Forms.Label();
-            this.lblBodesJogador3 = new System.Windows.Forms.Label();
-            this.panel10 = new System.Windows.Forms.Panel();
-            this.label9 = new System.Windows.Forms.Label();
-            this.lblBodesJogador4 = new System.Windows.Forms.Label();
             this.btnImg = new System.Windows.Forms.Button();
-            this.panel4 = new System.Windows.Forms.Panel();
-            this.lblBodeJ22 = new System.Windows.Forms.Label();
-            this.lblBodesJogador2 = new System.Windows.Forms.Label();
             this.btnIniciar = new System.Windows.Forms.Button();
             this.panel3 = new System.Windows.Forms.Panel();
             this.lblVocê = new System.Windows.Forms.Label();
             this.pictureBox3 = new System.Windows.Forms.PictureBox();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
+            this.lblEquipe = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
-            this.panel6.SuspendLayout();
-            this.panel10.SuspendLayout();
-            this.panel4.SuspendLayout();
             this.panel3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
@@ -210,11 +199,8 @@ namespace BodeOfWar
             this.panel1.BackColor = System.Drawing.Color.Tan;
             this.panel1.Controls.Add(this.pnlNav);
             this.panel1.Controls.Add(this.panel2);
-            this.panel1.Controls.Add(this.panel6);
-            this.panel1.Controls.Add(this.panel10);
             this.panel1.Controls.Add(this.btnImg);
             this.panel1.Controls.Add(this.lblEscolha);
-            this.panel1.Controls.Add(this.panel4);
             this.panel1.Controls.Add(this.txtEscolha);
             this.panel1.Controls.Add(this.btnIniciar);
             this.panel1.Controls.Add(this.btnConfirmar);
@@ -233,68 +219,6 @@ namespace BodeOfWar
             this.pnlNav.Size = new System.Drawing.Size(3, 100);
             this.pnlNav.TabIndex = 43;
             // 
-            // panel6
-            // 
-            this.panel6.Controls.Add(this.label3);
-            this.panel6.Controls.Add(this.lblBodesJogador3);
-            this.panel6.Location = new System.Drawing.Point(0, 304);
-            this.panel6.Name = "panel6";
-            this.panel6.Size = new System.Drawing.Size(200, 80);
-            this.panel6.TabIndex = 45;
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.ImageAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.label3.Location = new System.Drawing.Point(86, 36);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(29, 31);
-            this.label3.TabIndex = 42;
-            this.label3.Text = "0";
-            // 
-            // lblBodesJogador3
-            // 
-            this.lblBodesJogador3.AutoSize = true;
-            this.lblBodesJogador3.Font = new System.Drawing.Font("MS Reference Sans Serif", 12F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblBodesJogador3.ForeColor = System.Drawing.Color.Cornsilk;
-            this.lblBodesJogador3.Location = new System.Drawing.Point(47, 4);
-            this.lblBodesJogador3.Name = "lblBodesJogador3";
-            this.lblBodesJogador3.Size = new System.Drawing.Size(97, 20);
-            this.lblBodesJogador3.TabIndex = 43;
-            this.lblBodesJogador3.Text = "Jogador 3";
-            // 
-            // panel10
-            // 
-            this.panel10.Controls.Add(this.label9);
-            this.panel10.Controls.Add(this.lblBodesJogador4);
-            this.panel10.Location = new System.Drawing.Point(1, 390);
-            this.panel10.Name = "panel10";
-            this.panel10.Size = new System.Drawing.Size(200, 80);
-            this.panel10.TabIndex = 46;
-            // 
-            // label9
-            // 
-            this.label9.AutoSize = true;
-            this.label9.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label9.ImageAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.label9.Location = new System.Drawing.Point(87, 35);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(29, 31);
-            this.label9.TabIndex = 42;
-            this.label9.Text = "0";
-            // 
-            // lblBodesJogador4
-            // 
-            this.lblBodesJogador4.AutoSize = true;
-            this.lblBodesJogador4.Font = new System.Drawing.Font("MS Reference Sans Serif", 12F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblBodesJogador4.ForeColor = System.Drawing.Color.Cornsilk;
-            this.lblBodesJogador4.Location = new System.Drawing.Point(47, 4);
-            this.lblBodesJogador4.Name = "lblBodesJogador4";
-            this.lblBodesJogador4.Size = new System.Drawing.Size(97, 20);
-            this.lblBodesJogador4.TabIndex = 43;
-            this.lblBodesJogador4.Text = "Jogador 4";
-            // 
             // btnImg
             // 
             this.btnImg.FlatAppearance.BorderSize = 0;
@@ -309,37 +233,6 @@ namespace BodeOfWar
             this.btnImg.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage;
             this.btnImg.UseVisualStyleBackColor = true;
             this.btnImg.Click += new System.EventHandler(this.btnImg_Click);
-            // 
-            // panel4
-            // 
-            this.panel4.Controls.Add(this.lblBodeJ22);
-            this.panel4.Controls.Add(this.lblBodesJogador2);
-            this.panel4.Location = new System.Drawing.Point(0, 218);
-            this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(200, 80);
-            this.panel4.TabIndex = 44;
-            // 
-            // lblBodeJ22
-            // 
-            this.lblBodeJ22.AutoSize = true;
-            this.lblBodeJ22.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblBodeJ22.ImageAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.lblBodeJ22.Location = new System.Drawing.Point(86, 37);
-            this.lblBodeJ22.Name = "lblBodeJ22";
-            this.lblBodeJ22.Size = new System.Drawing.Size(29, 31);
-            this.lblBodeJ22.TabIndex = 42;
-            this.lblBodeJ22.Text = "0";
-            // 
-            // lblBodesJogador2
-            // 
-            this.lblBodesJogador2.AutoSize = true;
-            this.lblBodesJogador2.Font = new System.Drawing.Font("MS Reference Sans Serif", 12F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblBodesJogador2.ForeColor = System.Drawing.Color.Cornsilk;
-            this.lblBodesJogador2.Location = new System.Drawing.Point(47, 4);
-            this.lblBodesJogador2.Name = "lblBodesJogador2";
-            this.lblBodesJogador2.Size = new System.Drawing.Size(97, 20);
-            this.lblBodesJogador2.TabIndex = 43;
-            this.lblBodesJogador2.Text = "Jogador 2";
             // 
             // btnIniciar
             // 
@@ -401,6 +294,16 @@ namespace BodeOfWar
             this.pictureBox2.TabIndex = 41;
             this.pictureBox2.TabStop = false;
             // 
+            // lblEquipe
+            // 
+            this.lblEquipe.AutoSize = true;
+            this.lblEquipe.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblEquipe.Location = new System.Drawing.Point(1117, 9);
+            this.lblEquipe.Name = "lblEquipe";
+            this.lblEquipe.Size = new System.Drawing.Size(154, 17);
+            this.lblEquipe.TabIndex = 43;
+            this.lblEquipe.Text = "Equipe: BobEsponja";
+            // 
             // Bode
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -408,6 +311,7 @@ namespace BodeOfWar
             this.AutoScroll = true;
             this.BackColor = System.Drawing.Color.BurlyWood;
             this.ClientSize = new System.Drawing.Size(1305, 758);
+            this.Controls.Add(this.lblEquipe);
             this.Controls.Add(this.pnlMesa);
             this.Controls.Add(this.lblQtdBodes);
             this.Controls.Add(this.lblBodes);
@@ -430,12 +334,6 @@ namespace BodeOfWar
             this.Load += new System.EventHandler(this.Bode_Load);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
-            this.panel6.ResumeLayout(false);
-            this.panel6.PerformLayout();
-            this.panel10.ResumeLayout(false);
-            this.panel10.PerformLayout();
-            this.panel4.ResumeLayout(false);
-            this.panel4.PerformLayout();
             this.panel3.ResumeLayout(false);
             this.panel3.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
@@ -467,16 +365,8 @@ namespace BodeOfWar
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Panel panel3;
         private System.Windows.Forms.PictureBox pictureBox3;
-        private System.Windows.Forms.Panel panel4;
-        private System.Windows.Forms.Label lblBodeJ22;
-        private System.Windows.Forms.Label lblBodesJogador2;
         private System.Windows.Forms.Label lblVocê;
-        private System.Windows.Forms.Panel panel6;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Label lblBodesJogador3;
-        private System.Windows.Forms.Panel panel10;
-        private System.Windows.Forms.Label label9;
-        private System.Windows.Forms.Label lblBodesJogador4;
         private System.Windows.Forms.Panel pnlNav;
+        private System.Windows.Forms.Label lblEquipe;
     }
 }
