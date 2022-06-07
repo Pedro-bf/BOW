@@ -54,7 +54,7 @@ namespace BodeOfWar
         {
             TimerChecarVez = new Timer();
             TimerChecarVez.Tick += new EventHandler(update);
-            TimerChecarVez.Interval = 2500; //2.5s 
+            TimerChecarVez.Interval = 2000; //2s 
             TimerChecarVez.Start();
         }
 
@@ -272,6 +272,8 @@ namespace BodeOfWar
             {
                 return;
             }
+            txtHistorico.Text = Jogo.ExibirNarracao(this.idPartida);
+            
             TimerChecarVez.Enabled = true;
         }
 
@@ -621,11 +623,6 @@ namespace BodeOfWar
         private void Bode_FormClosing(object sender, FormClosingEventArgs e)
         {
             this.TimerChecarVez.Enabled = false;
-        }
-
-        private void tmrHistorico_Tick(object sender, EventArgs e)
-        {
-            txtHistorico.Text = Jogo.ExibirNarracao(this.idPartida);
         }
     }
 }
