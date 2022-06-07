@@ -206,6 +206,11 @@ namespace BodeOfWar
                     }
                 }
 
+                if (lblJogadorVez.Text.Equals(this.idJogador.ToString()) && estadoJogo.Contains('B'))
+                {
+                    jogarCarta(cartasMesa);
+                }
+
                 int contador = 0;
                 foreach (string item in cartasMesa)
                 {
@@ -231,11 +236,6 @@ namespace BodeOfWar
                 {
                     DesenharCarta(cartasMesa, pnlMesa);
                     UltimoCartaMesa = cartasMesa;
-                }
-
-                if (lblJogadorVez.Text.Equals(this.idJogador.ToString()) && estadoJogo.Contains('B'))
-                {
-                    jogarCarta(cartasMesa);
                 }
 
                 int cartasJogadas = 0;//cartas na mesa
