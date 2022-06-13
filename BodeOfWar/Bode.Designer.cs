@@ -29,6 +29,7 @@ namespace BodeOfWar
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Bode));
             this.lblJogadorVez = new System.Windows.Forms.Label();
             this.lblVerificarVez = new System.Windows.Forms.Label();
             this.txtHistorico = new System.Windows.Forms.TextBox();
@@ -94,7 +95,8 @@ namespace BodeOfWar
             // txtHistorico
             // 
             this.txtHistorico.BackColor = System.Drawing.Color.Tan;
-            this.txtHistorico.Font = new System.Drawing.Font("MS Reference Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtHistorico.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtHistorico.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.txtHistorico.Location = new System.Drawing.Point(1008, 215);
             this.txtHistorico.Multiline = true;
             this.txtHistorico.Name = "txtHistorico";
@@ -441,7 +443,8 @@ namespace BodeOfWar
             this.Controls.Add(this.lblJogadorVez);
             this.Controls.Add(this.lblVerificarVez);
             this.Controls.Add(this.panel1);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.MaximumSize = new System.Drawing.Size(1920, 1080);
             this.MinimumSize = new System.Drawing.Size(1305, 800);
